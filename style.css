@@ -2,6 +2,7 @@
 
 
 /*Body style*/
+
 * {
     margin: 0;
 }
@@ -23,7 +24,9 @@ body {
     display: flex;
 }
 
+
 /*Menu style*/
+
 .menu {
     display: flex;
     flex-direction: column;
@@ -33,7 +36,7 @@ body {
     justify-content: space-between;
 }
 
-#logo{
+#logo {
     width: 60px;
     height: 70px;
     padding-top: 20px;
@@ -41,7 +44,7 @@ body {
     display: flex;
 }
 
-.menu_tags{
+.menu_tags {
     font-size: 1.5rem;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -65,7 +68,7 @@ body {
     align-items: center;
 }
 
-.footer-sidebar{
+.footer-sidebar {
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
@@ -79,8 +82,9 @@ body {
 
 
 /* Impressum Style */
-.impressum{
-    margin:40px
+
+.impressum {
+    margin: 40px
 }
 
 .imp_highlight {
@@ -90,7 +94,8 @@ body {
 
 
 /*Privacy Policy Style */
-.privacy_policy{
+
+.privacy_policy {
     margin: 40px;
     margin-bottom: 20px;
     font-size: 0.9em;
@@ -114,13 +119,16 @@ body {
 
 
 /*Workspace Style*/
+
 .workspace {
     /* background-color: aliceblue; */
     /* width: 850px; */
     width: 100%;
 }
 
+
 /* Board Style */
+
 .board-container {
     display: flex;
     justify-content: space-evenly;
@@ -135,7 +143,7 @@ body {
     align-items: center;
 }
 
-.task-container > h2 {
+.task-container>h2 {
     text-transform: uppercase;
 }
 
@@ -145,7 +153,9 @@ body {
     width: 250px;
 }
 
+
 /* Backlog Style */
+
 .backlog-container {
     padding: 0 32px;
 }
@@ -154,7 +164,7 @@ body {
     margin-top: 32px;
 }
 
-.backlog-header > p {
+.backlog-header>p {
     color: rgb(102, 115, 180);
 }
 
@@ -168,3 +178,183 @@ body {
     font-size: 1.1rem;
 }
 
+
+/* adToTask style*/
+
+.content-area {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+.form {
+    display: flex;
+    width: 90%;
+    background-color: rgb(244, 243, 251);
+    border-radius: 10px;
+}
+
+.form-section-left {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    width: 70%;
+}
+
+.form-section-right {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    width: 70%;
+}
+
+label {
+    color: rgb(30, 49, 144);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+input {
+    width: 98%;
+    height: 50px;
+    background-color: white;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding-right: 1rem;
+}
+
+select {
+    width: 102%;
+    height: 55px;
+    background-color: white;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+}
+
+.employees-section {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.employees-section-img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+    background-color: antiquewhite;
+}
+
+.employees-section-plus-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+    margin-left: 1rem;
+}
+
+.employees-section-plus-btn:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.choose-employee {
+    position: absolute;
+    left: 60%;
+    background-color: white;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+}
+
+.employee {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.5rem;
+}
+
+.employee:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    background-color: rgb(102, 115, 180);
+}
+
+.employee-name {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-btn-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cancel-btn {
+    border: 2px solid rgb(244, 243, 251);
+    background-color: rgb(244, 243, 251);
+    color: rgb(30, 49, 144);
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.cancel-btn:hover {
+    cursor: pointer;
+    border: 2px solid rgb(30, 49, 144);
+}
+
+.create-task-btn {
+    background-color: rgb(30, 49, 144);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid rgb(30, 49, 144);
+    margin-left: 2rem;
+}
+
+.create-task-btn:hover {
+    cursor: pointer;
+    background-color: rgb(46, 68, 179);
+}
+
+.link-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#linkToBacklog {
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.sentencecolor {
+    color: blue;
+}
+
+textarea {
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 1rem;
+    resize: none;
+    width: 90%;
+}
+
+.d-none {
+    display: none;
+}
+
+
+/* helpStyle*/
+
+.content-area {
+    flex: 1;
+    padding: 1.5rem;
+}
