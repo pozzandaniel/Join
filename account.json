@@ -1,0 +1,24 @@
+[{
+    "name": "Daniel",
+    "email": "pozzan.dnl@gmail.com",
+    "password": "1234",
+    "bild": "./img/Icons/daniel.jpg"
+},
+{
+    "name": "Norbert",
+    "email": "norbrider87@gmail.com",
+    "password": "3456",
+    "bild": "./img/Icons/norbert.jpg"
+},
+{
+    "name": "Feros",
+    "email": "",
+    "password": "",
+    "bild": "./img/Icons/feros.jpeg"
+},
+{
+    "name": "Kevin",
+    "email": "",
+    "password": "",
+    "bild": "./img/Icons/kevin.jpg"
+}]

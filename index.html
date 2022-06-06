@@ -10,11 +10,12 @@
     <script src="./impressum_pp.js"></script>
     <script src="./backlog.js"></script>
     <script src="./adToTask.js"></script>
+    <script src="./login.js"></script>
     <script src="./help.js"></script>
     <title>Join</title>
 </head>
 
-<body onload="removeClasses_pp()">
+<body onload="renderAccount()">
     <div class="container">
         <div class="menu">
             <div>
@@ -26,8 +27,8 @@
             </div>
             <div class="profil_img">img</div>
             <div class="footer-sidebar">
-                <a onclick="impressum()" href="#">Impressum</a>
-                <a onclick="privacy()" href="#">Privacy Policy</a>
+                <div class="menu_tags" onclick="impressum()" href="#">Impressum</div>
+                <div class="menu_tags" onclick="privacy()" href="#">Privacy Policy</div>
             </div>
         </div>
         <div id="workspace" class="workspace">
