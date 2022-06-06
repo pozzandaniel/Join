@@ -7,6 +7,16 @@ async function renderAccount(){
 }
 
 function login(account){
-
+ /*   document.getElementById('container').style.display = "none"; */
+    body.innerHTML += `
+    
+        <div class="login">
+        <form action="">
+        <input type="text">
+        <input type="text">
+        <button>Log In</button>
+    </form>
+        </div>
+    `;
     console.log(account[1].name);
 }

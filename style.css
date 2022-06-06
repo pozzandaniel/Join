@@ -3,6 +3,15 @@
 
 /*Body style*/
 
+.display_none {
+    display: none;
+}
+
+.login{
+    height: 50px;
+    width:50px;
+}
+
 * {
     margin: 0;
 }
