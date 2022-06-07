@@ -11,11 +11,6 @@ function login(account){
     body.innerHTML += `
     
         <div class="login">
-        <form action="">
-        <input type="text">
-        <input type="text">
-        <button>Log In</button>
-    </form>
         </div>
     `;
     console.log(account[1].name);
