@@ -4,7 +4,7 @@
 /*Body style*/
 
 .display_none {
-    display: none;
+    display: none !important;
 }
 
 .login_container{

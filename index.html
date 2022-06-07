@@ -18,18 +18,18 @@
 
 
 
-<body onload="renderAccount()">
+<body>
     <div id="container" class="container">
 
-        <div class="login_container" >
+        <div id="loginContainer" class="login_container" >
             <div class="log_in_heder">
                 <img src="./img/Icons/joinlogo.png" alt="">
                 Log In</div>
             <div class="log_in">
-                <form action="">
-                    <input type="text">
-                    <input type="text">
-                    <button>Log In</button>
+                <form >
+                    <input id="username" required type="text">
+                    <input id="userpassword" required type="password">
+                    <button onclick="renderAccount()" type="submit">Log In</button>
                 </form>
             
             </div>
