@@ -7,7 +7,7 @@
     display: none !important;
 }
 
-.login_container{
+.login_container {
     height: 100%;
     width: 100%;
     display: flex;
@@ -23,14 +23,12 @@
     background-color: white;
 }
 
-.log_in{
+.log_in {
     height: 150px;
     width: 300px;
-    
-
 }
 
-.log_in_heder{
+.log_in_heder {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -303,10 +301,12 @@ select {
 
 .choose-employee {
     position: absolute;
-    left: 60%;
+    left: 68%;
     background-color: white;
-    padding-left: 1rem;
+    padding-left: 2rem;
     padding-top: 0.5rem;
+    width: 300px;
+    margin-top: 5px;
 }
 
 .employee {
