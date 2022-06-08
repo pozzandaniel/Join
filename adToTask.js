@@ -40,8 +40,22 @@ function createTask() {
     task_assigned.value = '';
 
     console.log(allTasks);
+}
 
+function changePhoto() {
+    let photo = document.getElementById('profilepicture');
+    let input = document.getElementById('assigned-input');
+    photo.classList.remove('d-none')
 
+    if (input.value == 'Kevin') {
+        photo.src="img/Icons/kevin.jpg"
+    } else if (input.value == 'Feros') {
+        photo.src="img/Icons/feros.jpeg"
+    } else if (input.value == 'Daniel') {
+        photo.src="img/Icons/daniel.jpg"
+    } else if (input.value == 'Norbert') {
+        photo.src="img/Icons/norbert.jpg"
+    };
 
 }
 
@@ -92,11 +106,12 @@ function adToTaskTemplate() {
                         <h2>Assigned to</h2>
                         <div class="placeholder-container">
                             <div class="icon-container">
-                                <img class="profilepicture" src="img/Icons/kevin.jpg" alt="">
+                                <img id="profilepicture" class="profilepicture d-none" src="" alt="">
                                 <div onclick="openDropdown()" class="add-button-container">
                                     <img class="add-button" src="img/Icons/add-icon.png" alt="">
                                 </div>
-                                <select id="assigned-input" class="choose-name-input d-none" name="" id="">
+                                <select onchange="changePhoto()" id="assigned-input" class="choose-name-input d-none">
+                                    <option value="" disabled selected>Select your option</option>
                                     <option value="Kevin">Kevin</option>
                                     <option value="Feros">Feros</option>
                                     <option value="Norbert">Norbert</option>
