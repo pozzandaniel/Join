@@ -1,111 +1,80 @@
-let date = new Date().getTime();
-
-
 function renderAdToTask() {
-
     let adToTask = document.getElementById('workspace');
     adToTask.innerHTML = '';
     adToTask.innerHTML += adToTaskTemplate();
-
-
-
-
 }
 
-
-function showworker() {
-    document.getElementById('worker').classList.remove('d-none');
-
+function openDropdown() {
+    document.getElementById('employee').classList.remove('d-none');
 }
-
-function showWorkerPic1() {
-
-    document.getElementById('workpic').innerHTML = `<img src="img/Icons/feros.jpeg">`;
-
-}
-
 
 function adToTaskTemplate() {
-    return /*html*/ `
+    return /*html*/`
+        <div class="add-task-main-container">
 
-          
-        <div class="content-area">
-        <h1>Add Task</h1>
-        <p class="sentencecolor">Learning Management System Project</p>
+            <div class="add-task-container">
 
-
-        <div class="form">
-            <div class="form-section-left">
-                <label>TITLE</label>
-                <input id="title" required type="text">
-                <label>CATEGORY</label>
-                <select>
-                    <option value=""></option>
-                    <option value="Management">Management</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="IT">IT</option>
-                    <option value="Production">Production</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Logistics">Logistics</option>
-                    <option value="Sales">Sales</option>
-                </select>
-                <label for="description">DESCRIPTION</label>
-                <textarea required name="description" cols="30" rows="7"></textarea>
-            </div>
-            <div class="form-section-right">
-                <label>DATE</label>
-                <input id ="getDate" placeholder="${date}">
-                <label>URGENCY</label>
-                <select>
-                    <option value=""></option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
-
-
-                <div class="employees-section">
-                  <label>ASSIGNED TO</label>
-                        <div>
-                            <div id = "workpic">
-                               
-                            </div>
-                                 <img onclick="showworker()" src="img/icons/icon plus.png" class="employees-section-plus-btn">
-                        </div>
-
-
-                        <select  id="worker" class="choose-employee d-none">
-                             <option class="employee" ></option>
-                             <option onclick ="showWorkerPic1()"  class="employee" >Feros Djahani</option>
-                             <option onclick ="showWorkerPic()"  class="employee" >Daniel Pozzan</option>
-                             <option onclick ="showWorkerPic()"  class="employee" >Kevin Wagner</option>
-                             <option onclick ="showWorkerPic()"  class="employee" >Norbert Madarasz</option>
-                        </select>
-                        
-                            
-                            
-                        
-                </div>
-                
-                <div class="form-btn-section">
-                    <div><button class="cancel-btn" onclick="clearInput()">CANCEL</button></div>
-                    <div><button type="submit" class="create-task-btn" onclick="setNewTask()">CREATE TASK</button>
+                <div class="top-row">
+                    <div class="title-input-container">
+                        <h2>Title</h2>
+                        <input type="text">
+                    </div>
+                    <div class="date-container">
+                        <h2>Due Date</h2>
+                        <input type="date">
                     </div>
                 </div>
-                <div class="link-area">
-                    <a href="./backlog.html" class="create-task-btn d-none" id="linkToBacklog">TO BACKLOG</a>
+
+                <div class="mid-row">
+                    <div class="category-container">
+                        <h2>Category</h2>
+                        <select name="" id="">
+                            <option value="">Management</option>
+                            <option value="">Software Development</option>
+                            <option value="">UX/UI Design</option>
+                            <option value="">Human Ressources</option>
+                        </select>
+                    </div>
+                    <div class="urgency-container">
+                        <h2>Urgency</h2>
+                        <select name="" id="">
+                            <option value="">High</option>
+                            <option value="">Intermediate</option>
+                            <option value="">Low</option>
+                        </select>
+                    </div>
                 </div>
+
+                <div class ="bottom-row">
+                    <div class="description-container">
+                        <h2>Description</h2>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="assigned-to-container">
+                        <h2>Assigned to</h2>
+                        <div class="placeholder-container">
+                            <div class="icon-container">
+                                <img class="profilepicture" src="img/Icons/kevin.jpg" alt="">
+                                <div onclick="openDropdown()" class="add-button-container">
+                                    <img class="add-button" src="img/Icons/add-icon.png" alt="">
+                                </div>
+                                <select id="employee" class="choose-name-input d-none" name="" id="">
+                                    <option value="">Kevin</option>
+                                    <option value="">Feros</option>
+                                    <option value="">Norbert</option>
+                                    <option value="">Daniel</option>
+                                </select>
+                            </div>
+                            <div class="button-container">
+                                <button>Cancel</button>
+                                <button>Create Task</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
+
         </div>
-
-    </div>
-</div>
-
-
-</div>
-
-
-
-
-    `
+    `;
 }
