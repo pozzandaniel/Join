@@ -11,6 +11,7 @@ function openDropdown() {
     document.getElementById('assigned-input').classList.remove('d-none');
 }
 
+
 function createTask() {
     let task_title = document.getElementById('title-input');
     let task_due_date = document.getElementById('date-input');
@@ -42,9 +43,11 @@ function createTask() {
     console.log(allTasks);
 }
 
+
 function changePhoto() {
     let photo = document.getElementById('profilepicture');
     let input = document.getElementById('assigned-input');
+
     photo.classList.remove('d-none')
 
     if (input.value == 'Kevin') {
@@ -56,15 +59,14 @@ function changePhoto() {
     } else if (input.value == 'Norbert') {
         photo.src="img/Icons/norbert.jpg"
     };
-
 }
 
 
 function adToTaskTemplate() {
     return /*html*/`
         <div class="add-task-main-container">
-
             <div class="add-task-container">
+
 
                 <div class="top-row">
                     <div class="title-input-container">
@@ -76,6 +78,7 @@ function adToTaskTemplate() {
                         <input id="date-input" type="date">
                     </div>
                 </div>
+
 
                 <div class="mid-row">
                     <div class="category-container">
@@ -96,6 +99,7 @@ function adToTaskTemplate() {
                         </select>
                     </div>
                 </div>
+
 
                 <div class ="bottom-row">
                     <div class="description-container">
@@ -125,6 +129,7 @@ function adToTaskTemplate() {
                         </div>
                     </div>
                 </div>
+                
                 
             </div>
 
