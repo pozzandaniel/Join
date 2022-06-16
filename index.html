@@ -9,6 +9,7 @@
     <script src="./script.js"></script>
     <script src="./impressum_pp.js"></script>
     <script src="./backlog.js"></script>
+    <script src="./mini_backend.js"></script>
     <script src="./adToTask.js"></script>
     <script src="./login.js"></script>
     <script src="./help.js"></script>
@@ -18,18 +19,18 @@
 
 
 
-<body>
+<body onload="renderAccount()">
     <div id="container" class="container">
 
-        <div id="loginContainer" class="login_container display_none" >
+        <div id="loginContainer" class="login_container" >
             <div class="log_in_heder">
                 <img src="./img/Icons/joinlogo.png" alt="">
                 Log In</div>
             <div class="log_in">
-                <form >
-                    <input id="username" required type="text">
+                <form  onsubmit="event.preventDefault(), login()" >
+                    <input  id="username" required type="text">
                     <input id="userpassword" required type="password">
-                    <button onclick="renderAccount()">Log In</button>
+                    <button id="button" type="submit">Log In</button>
                 </form>
             
             </div>

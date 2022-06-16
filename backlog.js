@@ -1,7 +1,6 @@
 function renderBacklog() {
     let workspace = document.getElementById('workspace');
-    workspace.innerHTML = '';
-    workspace.innerHTML += backlogTemplate();
+    workspace.innerHTML = backlogTemplate();
 }
 
 function backlogTemplate() {
@@ -18,8 +17,9 @@ function backlogTemplate() {
                 <p>details</p>
             </div>
             <div class="backlog-inputs-container">
+                <p>${allTasks[0].title}</p>
 
             </div>
         </div>
-    `
+    `;
 }

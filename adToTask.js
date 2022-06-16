@@ -41,6 +41,7 @@ function createTask() {
     task_assigned.value = '';
 
     console.log(allTasks);
+    saveJSONToServer();
 }
 
 
