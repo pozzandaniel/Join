@@ -23,16 +23,21 @@
     <div id="container" class="container">
 
         <div id="loginContainer" class="login_container" >
-            <div class="log_in_heder">
+            <div class="login-box">
+               
                 <img src="./img/Icons/joinlogo.png" alt="">
-               <span>Log In</span> </div>
-            <div class="log_in">
-                <form  onsubmit="event.preventDefault(), login()" >
-                    <input  id="username" required type="text">
-                    <input id="userpassword" required type="password">
-                    <button id="button" type="submit">Log In</button>
-                </form>
-            
+                
+                <div class="log_in">
+                    <form  onsubmit="event.preventDefault(), login()" >
+                        <label for="Username">Username</label>
+                        <input placeholder="Username"  id="username" required type="text">
+                        <label for="Password">Password</label>
+                        <input placeholder="Password" id="userpassword" required type="password">
+                        <div style="color: white; font-size: smaller;padding-top: 10px;"><input type="checkbox">Create new account</div>
+                        <button id="button" type="submit">Log In</button>
+                    </form>
+                
+                </div>
             </div>
 
         </div>
