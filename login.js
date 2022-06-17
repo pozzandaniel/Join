@@ -15,24 +15,30 @@ function login(){
     
     let username = document.getElementById('username').value;
     let userpassword = document.getElementById('userpassword').value;
+ //   let userImg = document.getElementById('user_img').src
     
     
-    // document.getElementById('loginContainer').style = 'display: none';
-    // document.getElementById('form').classList.add('display_none !important');
-    // document.getElementById('form').style = 'display: none';
     
     
-    if(account.some( user => user.name == username && user.password == userpassword ))
+    if(account.some( user => user.name == username && user.password == userpassword )){
         document.getElementById('loginContainer').classList.add('display_none');
-    else
+
+       // document.getElementById('user_img').src = account[user].bild;
+       //console.log(account[0].name);
+    }
+    else {
         //NO USER FOUND WITH USERNAME AND PASSWORD
         alert('NO USER FOUND WITH USERNAME AND PASSWORD');
-    
-    // if(account[0].name == username && account[0].password == userpassword){
-    //     document.getElementById('loginContainer').classList.add('display_none');
         
-        
-        
-    // }
+       } 
    
+    
+    account.forEach(element => {
+        
+        if (username == element.name){
+            document.getElementById('user_img').src = element.bild;
+        }
+    });
+
+
 }
