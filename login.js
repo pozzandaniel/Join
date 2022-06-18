@@ -5,6 +5,7 @@ async function renderAccount(){
     let url = './account.json';
     let response = await fetch(url);
     account = await response.json();
+
     
     
 }
@@ -42,3 +43,18 @@ function login(){
 
 
 }
+
+
+
+function createNewAccount(){
+    let checkbox = document.getElementById('newAccount');
+
+    let textButton = document.getElementById('button');
+
+    if (checkbox.checked == true){
+        textButton.innerHTML = "Sign Up";
+      } else {
+        textButton.innerHTML = "Login in";
+      }
+}
+

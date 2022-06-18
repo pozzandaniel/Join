@@ -35,7 +35,6 @@ function impressTempl(){
     <h1>Impressum</h1>
     <p class='imp_highlight'>Angaben gemäß § 5 TMG</p>
     <p>Daniel Pozzan <br>  Damerowsweg 23<br> 22081 Hamburg <br> </p>
-    <p> <strong class='imp_highlight'>Vertreten durch: </strong> <br> <br>Daniel Pozzan<br></p>
     <p><strong class='imp_highlight'>Kontakt:</strong> <br> <br> 
     Telefon: 0049-17631048164<br>
     E-Mail: <a href='mailto:pozzan.dnl@gmail.com'>pozzan.dnl@gmail.com</a></br></p><br> 

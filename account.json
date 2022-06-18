@@ -13,12 +13,12 @@
 {
     "name": "Feros",
     "email": "",
-    "password": "",
+    "password": "7890",
     "bild": "./img/Icons/feros.jpeg"
 },
 {
     "name": "Kevin",
     "email": "",
-    "password": "",
+    "password": "1011",
     "bild": "./img/Icons/kevin.jpg"
 }]
