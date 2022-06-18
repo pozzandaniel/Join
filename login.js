@@ -45,11 +45,11 @@ function login(){
 }
 
 
+let checkbox; 
 
 function switchToSignUp(){
-    let checkbox = document.getElementById('newAccount');
     let textButton = document.getElementById('button');
-
+    checkbox =  document.getElementById('newAccount');
     
     if (checkbox.checked == true){
         textButton.innerHTML = "Sign Up";
@@ -57,13 +57,37 @@ function switchToSignUp(){
         document.getElementById('button').addEventListener("click", AddAccount);
 
       } else {
-        textButton.innerHTML = "Login in";
+        textButton.innerHTML = "Login In";
         document.getElementById('button').type = 'submit';
       }
 
 
 }
 
-function AddAccount(){
-    alert('guta');
+class Guest{
+    name;
+    password;
+}
+
+function AddAccount(username, password){
+    username = document.getElementById('username');
+    password = document.getElementById('userpassword');
+    let newGuest = new Guest();
+    newGuest['name'] = username.value;
+    newGuest['password'] = password.value;
+    account.push(newGuest);
+    refreshForm();
+
+}
+
+function refreshForm(){
+    event.preventDefault();
+    checkbox.checked = false;
+    document.getElementById('button').innerHTML = "Log In";
+    document.getElementById('button').removeEventListener("click", AddAccount);
+    document.getElementById('button').type = 'submit';
+    alert('Your Username and Password is saved and you can log in');
+
+
+
 }
