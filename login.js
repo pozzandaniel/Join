@@ -46,15 +46,24 @@ function login(){
 
 
 
-function createNewAccount(){
+function switchToSignUp(){
     let checkbox = document.getElementById('newAccount');
-
     let textButton = document.getElementById('button');
 
+    
     if (checkbox.checked == true){
         textButton.innerHTML = "Sign Up";
+        document.getElementById('button').type = 'button';
+        document.getElementById('button').addEventListener("click", AddAccount);
+
       } else {
         textButton.innerHTML = "Login in";
+        document.getElementById('button').type = 'submit';
       }
+
+
 }
 
+function AddAccount(){
+    alert('guta');
+}
