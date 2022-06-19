@@ -250,25 +250,36 @@ body {
     color: rgb(102, 115, 180);
 }
 
-table {
+/* table {
     margin-top: 2rem;
     width: 100%;
-}
+} */
 
-tr {
+/* tr {
     text-align: center;
-}
+} */
 
 .backlog-table-header {
+    display: flex;
+    justify-content: space-around;
     text-transform: uppercase;
     color: #1E3090;
     font-weight: 700;
     font-size: 1.1rem;
 }
 
+.backlog-table-header > div {
+    width: 33%;
+}
+
 .backlog-table-tasks {
+    margin: 0rem 2rem 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     background-color: #F4F3FB;
     height: 70px;
+    border-radius: 12px;
 }
 
 .backlog-table-tasks:hover {
@@ -277,6 +288,9 @@ tr {
     cursor: pointer;
 }
 
+.backlog-table-tasks > div{
+    width: 33%;
+}
 
 /* adToTask style*/
 

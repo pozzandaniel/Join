@@ -7,17 +7,23 @@ function renderBacklog() {
 
 
 function renderBacklogTasks() {
-    let backlogTable = document.getElementById('backlog-table');
+    let workspace = document.getElementById('workspace');
 
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
         
-        backlogTable.innerHTML += /*html*/`
-            <tr id="backlog-tasks" class="backlog-table-tasks">
-                <td>${task['assignedTo']}</td>
-                <td>${task['category']}</td>
-                <td>${task['description']}</td>
-            </tr>
+        workspace.innerHTML += /*html*/`
+            <div id="backlog-tasks" class="backlog-table-tasks">
+                <div>
+                    <p>${task['assignedTo']}</p>
+                </div>
+                <div>
+                    <p>${task['category']}</p>
+                </div>
+                <div>
+                    <p>${task['description']}</p>
+                </div>
+            </div>
         `;
     }
 }
@@ -30,13 +36,19 @@ function backlogTemplate() {
                 <h1>Backlog</h1>
                 <p>Learning Managment System Project</p>
             </div>
-            <table id="backlog-table" class="backlog-table">
-                <tr class="backlog-table-header">
-                    <th>Assigned to</th>
-                    <th>Category</th>
-                    <th>Details</th>
-                </tr>
-            </table>
+
+            <div class="backlog-table-header">
+                <div>
+                    <h2>Assigned to</h2>
+                </div>
+                <div>
+                    <h2>Category</h2>
+                </div>
+                <div>
+                    <h2>Details</h2>
+                </div>
+            </div>
+
         </div>
     `;
 }

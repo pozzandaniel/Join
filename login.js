@@ -30,7 +30,7 @@ function login(){
         //NO USER FOUND WITH USERNAME AND PASSWORD
         alert('NO USER FOUND WITH USERNAME AND PASSWORD');
         
-       } 
+    } 
    
     
     account.forEach(element => {
@@ -86,7 +86,4 @@ function refreshForm(){
     document.getElementById('button').removeEventListener("click", AddAccount);
     document.getElementById('button').type = 'submit';
     alert('Your Username and Password is saved and you can log in');
-
-
-
 }
