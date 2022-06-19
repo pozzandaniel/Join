@@ -13,7 +13,6 @@ async function renderAccount(){
 
 function login(){
     
-    
     let username = document.getElementById('username').value;
     let userpassword = document.getElementById('userpassword').value;
  //   let userImg = document.getElementById('user_img').src

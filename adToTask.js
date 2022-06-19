@@ -24,12 +24,13 @@ function createTask() {
 
     let completeTask = {
         'title': task_title.value,
-        'due-date': task_due_date.value,
+        'dueDate': task_due_date.value,
         'category': task_category.value,
         'urgency': task_urgency.value,
         'description': task_description.value,
-        'assigned-to': task_assigned.value
-    }
+        'assignedTo': task_assigned.value,
+        'createdAt': new Date().getTime()
+    };
 
     allTasks.push(completeTask);
 
@@ -41,7 +42,17 @@ function createTask() {
     task_assigned.value = '';
 
     console.log(allTasks);
-    saveJSONToServer();
+
+    // saveJSONToServer();
+
+    saveAllTasks();
+    renderBacklog();
+}
+
+
+function saveAllTasks() {
+    let allTasksAsString = JSON.stringify(allTasks);
+    localStorage.setItem('allTasks', allTasksAsString)
 }
 
 

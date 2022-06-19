@@ -246,18 +246,35 @@ body {
     margin-top: 32px;
 }
 
-.backlog-header>p {
+.backlog-header > p {
     color: rgb(102, 115, 180);
 }
 
-.backlog-headlines {
-    display: flex;
-    justify-content: space-between;
+table {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+tr {
+    text-align: center;
+}
+
+.backlog-table-header {
     text-transform: uppercase;
-    color: rgb(30, 49, 144);
+    color: #1E3090;
     font-weight: 700;
-    margin-top: 3rem;
     font-size: 1.1rem;
+}
+
+.backlog-table-tasks {
+    background-color: #F4F3FB;
+    height: 70px;
+}
+
+.backlog-table-tasks:hover {
+    background-color: #a7a7a7;
+    height: 70px;
+    cursor: pointer;
 }
 
 
