@@ -13,6 +13,7 @@
     <script src="./adToTask.js"></script>
     <script src="./login.js"></script>
     <script src="./help.js"></script>
+    <script src="./index.js"></script>
     <title>Join</title>
 </head>
 
@@ -29,7 +30,7 @@
 <body onload="start()">
     <div id="container" class="container">
 
-        <!-- <div id="loginContainer" class="login_container" >
+        <div id="loginContainer" class="login_container" >
             <div class="login-box">
                
                 <img src="./img/Icons/joinlogo.png" alt="">
@@ -47,12 +48,12 @@
                 </div>
             </div>
 
-        </div> -->
+        </div>
 
         <div class="menu">
             <div>
                 <img id="logo" src="./img/Icons/logo.png" alt="">
-                <a class="menu_tags" href="./index.html">Board</a>
+                <a class="menu_tags" onclick="renderIndex()">Board</a>
                 <div onclick="renderBacklog()" class="menu_tags">Backlog</div>
                 <div onclick="renderAdToTask()" class="menu_tags">Add Task</div>
                 <div onclick="renderHelp()" class="menu_tags">Help</div>
