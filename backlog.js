@@ -13,7 +13,7 @@ function renderBacklogTasks() {
         const task = allTasks[i];
         
         workspace.innerHTML += /*html*/`
-            <div id="backlog-tasks" class="backlog-table-tasks">
+            <div onclick="addBoard(${i})" id="backlog-tasks ${i}" class="backlog-table-tasks">
                 <div>
                     <p>${task['assignedTo']}</p>
                 </div>

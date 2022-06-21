@@ -13,14 +13,15 @@
     <script src="./adToTask.js"></script>
     <script src="./login.js"></script>
     <script src="./help.js"></script>
-    <script src="./index.js"></script>
+    <script src="./board.js"></script>
     <title>Join</title>
 </head>
 
 <script>
     function start(){
         renderAccount();
-        loadAllTasks()
+        loadAllTasks();
+        renderBoard();
     }
 </script>
 
@@ -53,7 +54,7 @@
         <div class="menu">
             <div>
                 <img id="logo" src="./img/Icons/logo.png" alt="">
-                <a class="menu_tags" onclick="renderIndex()">Board</a>
+                <a class="menu_tags" onclick="renderBoard()">Board</a>
                 <div onclick="renderBacklog()" class="menu_tags">Backlog</div>
                 <div onclick="renderAdToTask()" class="menu_tags">Add Task</div>
                 <div onclick="renderHelp()" class="menu_tags">Help</div>
@@ -65,24 +66,7 @@
             </div>
         </div>
         <div id="workspace" class="workspace">
-            <div class="board-container">
-                <div class="task-container">
-                    <h2>to do</h2>
-                    <div class="task"></div>
-                </div>
-                <div class="task-container">
-                    <h2>in progress</h2>
-                    <div class="task"></div>
-                </div>
-                <div class="task-container">
-                    <h2>testing</h2>
-                    <div class="task"></div>
-                </div>
-                <div class="task-container">
-                    <h2>done</h2>
-                    <div class="task"></div>
-                </div>
-            </div>
+
         </div>
 
     </div>
