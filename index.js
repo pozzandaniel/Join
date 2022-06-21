@@ -1,20 +1,14 @@
-let titles = [];
-
-
-function renderBoard(){
 
 
 
+
+function renderIndex(){
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = `
     <div class="board-container">
-        <div  class="task-container">
+        <div class="task-container">
             <h2>to do</h2>
-            <div id="todotask" class="task">
-                <div>
-                    ${titles}
-                </div>
-            </div>
+            <div class="task"></div>
         </div>
         <div class="task-container">
             <h2>in progress</h2>
@@ -31,21 +25,4 @@ function renderBoard(){
     </div>
 
     `;
-}
-
-
-
-function addBoard(i) {
-    let allTasksAsString = localStorage.getItem('allTasks');
-
-    if (allTasksAsString) {
-        allTasks = JSON.parse(allTasksAsString);
-        
-    }  
-
-    let tickets = allTasks[i];
-    console.log(tickets);
-    titles.push(tickets.title);
-    
-
 }
