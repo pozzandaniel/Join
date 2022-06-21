@@ -66,6 +66,7 @@ function switchToSignUp(){
 class Guest{
     name;
     password;
+    bild;
 }
 
 function AddAccount(username, password){
@@ -74,16 +75,22 @@ function AddAccount(username, password){
     let newGuest = new Guest();
     newGuest['name'] = username.value;
     newGuest['password'] = password.value;
+    newGuest['bild'] = './img/Icons/guest-user.jpg'
     account.push(newGuest);
-    refreshForm();
+    refreshForm(username, password);
 
 }
 
-function refreshForm(){
+function refreshForm(username, password){
     event.preventDefault();
     checkbox.checked = false;
     document.getElementById('button').innerHTML = "Log In";
     document.getElementById('button').removeEventListener("click", AddAccount);
     document.getElementById('button').type = 'submit';
-    alert('Your Username and Password is saved and you can log in');
+    if(username.value && password.value){
+        alert('Your Username and Password is saved and you can log in');
+
+    } else {
+        alert('You must give an username and a password!');
+    }
 }
