@@ -235,6 +235,21 @@ body {
     width: 250px;
 }
 
+#toDoTask{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-story{
+    width: 170px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    padding: 12px;
+}
+
 
 /* Backlog Style */
 

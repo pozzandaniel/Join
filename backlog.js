@@ -8,12 +8,13 @@ function renderBacklog() {
 
 function renderBacklogTasks() {
     let workspace = document.getElementById('workspace');
+   
 
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
         
         workspace.innerHTML += /*html*/`
-            <div onclick="addBoard(${i})" id="backlog-tasks ${i}" class="backlog-table-tasks">
+            <div onclick="addBoard(${i}); deleteBacklogTask(${i})" class="backlog-table-tasks">
                 <div>
                     <p>${task['assignedTo']}</p>
                 </div>
@@ -27,6 +28,16 @@ function renderBacklogTasks() {
         `;
     }
 }
+
+function deleteBacklogTask(i){
+    allTasks.splice(i, 1);
+    saveAllTasks();
+    loadAllTasks();
+    document.getElementById('workspace').innerHTML = '';
+    renderBacklogTasks();
+}
+
+
 
 
 function backlogTemplate() {
