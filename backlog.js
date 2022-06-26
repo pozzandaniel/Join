@@ -34,7 +34,7 @@ function deleteBacklogTask(i){
     saveAllTasks();
     loadAllTasks();
     document.getElementById('workspace').innerHTML = '';
-    renderBacklogTasks();
+    renderBacklog();
 }
 
 

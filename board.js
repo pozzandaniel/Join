@@ -19,6 +19,7 @@ let descriptions = userStories['descriptions'];
 
 
 function renderBoard(){
+    
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = `
     <div class="board-container">
