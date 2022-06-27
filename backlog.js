@@ -30,11 +30,10 @@ function renderBacklogTasks() {
 }
 
 function deleteBacklogTask(i){
+    console.log(allTasks[i]);
     allTasks.splice(i, 1);
     saveAllTasks();
-    loadAllTasks();
-    document.getElementById('workspace').innerHTML = '';
-    renderBacklogTasks();
+    renderBacklog();
 }
 
 
@@ -73,3 +72,4 @@ function loadAllTasks() {
         console.log('loaded all tasks:', allTasks);
     }  
 }
+

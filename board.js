@@ -1,24 +1,33 @@
-let userStories = {
-    'titles': [],
-    'dueDates': [],
-    'categories': [],
-    'assignedTo': [],
-    'urgencies': [],
-    'createDats': [],
-    'descriptions': []
-}
+let userStories = [];
+let card = {
+    'title': '',
+    'dueDate': '',
+    'category': '',
+    'assignedTo': '',
+    'urgency': '',
+    'createDats': '',
+    'description': ''
+};
 
-let titles = userStories['titles'];
-let dueDates = userStories['dueDates'];
-let categories = userStories['categories'];
-let assignedTo = userStories['assignedTo'];
-let urgencies = userStories['urgencies'];
-let createDats = userStories['createDats'];
-let descriptions = userStories['descriptions'];
+
+
+
+// let titles = userStories['titles'];
+// let dueDates = userStories['dueDates'];
+// let categories = userStories['categories'];
+// let assignedTo = userStories['assignedTo'];
+// let urgencies = userStories['urgencies'];
+// let createDats = userStories['createDats'];
+// let descriptions = userStories['descriptions'];
+
+
 
 
 
 function renderBoard(){
+    
+    // event.preventDefault();
+    loadUserStory();
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = `
     <div class="board-container">
@@ -47,24 +56,28 @@ function renderBoard(){
 }
     
 function getUserStory(){
-
-        let toDoTask = document.getElementById('toDoTask');
-        toDoTask.innerHTML = '';  
-        
-        for (let i = 0; i < titles.length; i++) {
+  
+    let toDoTask = document.getElementById('toDoTask');
+    toDoTask.innerHTML = '';  
+    console.log('der Container von For-schleife läuft')
+   
+    
+        for (let i = 0; i < userStories.length; i++) {
             renderToDoTask(toDoTask, i);
             colorUserStory(i);
-          
+            console.log('die For-schleife funktioniert!', i)
+              
         }
+
+    
         
 }
 
 function renderToDoTask(toDoTask, i) {
-    loadUserStory(); 
-    let title = titles[i];
-    let dueDate = dueDates[i];
-    let category = categories[i];
-    let collaborators = assignedTo[i];
+    let title = userStories[i]['title'];
+    let dueDate = userStories[i]['dueDate'];
+    let category = userStories[i]['category'];
+    let collaborators = userStories[i]['assignedTo'];
     toDoTask.innerHTML += 
     `<div class = "user-story">
     <strong>${title}</strong> <span>${dueDate}</span>
@@ -75,7 +88,7 @@ function renderToDoTask(toDoTask, i) {
 }
 
 function colorUserStory(i){
-    let urgency = urgencies[i];
+    let urgency = userStories[i]['urgency'];
     let card = document.getElementsByClassName('user-story')[i];
     if(urgency == 'High'){
         card.style = 'background-color: rgba(200, 23, 23, 1);'
@@ -87,26 +100,31 @@ function colorUserStory(i){
 }
 
 function addBoard(i) {
-    titles.push(allTasks[i].title);
-    dueDates.push(allTasks[i].dueDate);
-    categories.push(allTasks[i].category);
-    assignedTo.push(allTasks[i].assignedTo);
-    urgencies.push(allTasks[i].urgency);
-    createDats.push(allTasks[i].createdAt);
-    descriptions.push(allTasks[i].description);
+    card['title'] = allTasks[i].title;
+    card['dueDate'] = allTasks[i].dueDate;
+    card['category'] = allTasks[i].category;
+    card['assignedTo'] = allTasks[i].assignedTo;
+    card['urgency'] = allTasks[i].urgency;
+    card['createDat'] = allTasks[i].createdAt;
+    card['description'] = allTasks[i].description;
+    userStories.push(card);
     saveUserStory();
+    
+    
 }
 
 function saveUserStory(){
     let userStoryAsString = JSON.stringify(userStories);
-    localStorage.setItem('userStories', userStoryAsString)
+    localStorage.setItem('userStories', userStoryAsString);
+    console.log('userStories ', userStories, '; userStoriesAsString ', userStoryAsString);
 }
 
 function loadUserStory() {
     let userStoryAsString = localStorage.getItem('userStories');
-
-    if (userStoryAsString) {
+    if(userStoryAsString){
         userStories = JSON.parse(userStoryAsString);
         console.log('loaded userstories:', userStories);
-    }  
+        
+    }
+  
 }
