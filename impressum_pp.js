@@ -12,9 +12,9 @@ function privacy(){
     let work_array = document.getElementsByClassName('workspace');
     work_array[0].innerHTML = '';
     work_array[0].innerHTML += privacyTempl();
-    work_array[0].classList.add('workspace-pp');
-    menu.classList.add('menu-pp');
-    container.classList.add('container-pp');
+    // work_array[0].classList.add('workspace-pp');
+    // menu.classList.add('menu-pp');
+    // container.classList.add('container-pp');
 
 }
 
@@ -38,7 +38,8 @@ function impressTempl(){
     <p><strong class='imp_highlight'>Kontakt:</strong> <br> <br> 
     Telefon: 0049-17631048164<br>
     E-Mail: <a href='mailto:pozzan.dnl@gmail.com'>pozzan.dnl@gmail.com</a></br></p><br> 
-    Website Impressum von <a href="https://www.impressum-generator.de">impressum-generator.de</a>
+    Website Impressum von <a href="https://www.impressum-generator.de">impressum-generator.de</a><br>
+    Logos stammen u. A.von <a href="https://icons8.com">https://icons8.com</a>
     </div>
     `;
 }

@@ -1,5 +1,8 @@
 let userStories = [];
+let currentDraggedElement;
 let card = {
+    'id': '',
+    'taskTypology': '',
     'title': '',
     'dueDate': '',
     'category': '',
@@ -10,76 +13,93 @@ let card = {
 };
 
 
-
-
-// let titles = userStories['titles'];
-// let dueDates = userStories['dueDates'];
-// let categories = userStories['categories'];
-// let assignedTo = userStories['assignedTo'];
-// let urgencies = userStories['urgencies'];
-// let createDats = userStories['createDats'];
-// let descriptions = userStories['descriptions'];
-
-
-
-
-
 function renderBoard(){
-    
-    // event.preventDefault();
     loadUserStory();
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = `
     <div class="board-container">
     <div  class="task-container">
             <h2>to do</h2>
-            <div id="toDoTask" class="task"></div>
+            <div ondragover="allowDrop(event)" ondrop="moveTo('toDoTask')" id="toDoTask" class="task"></div>
             </div>
         <div class="task-container">
         <h2>in progress</h2>
-            <div class="task"></div>
+            <div ondragover="allowDrop(event)" ondrop="moveTo('progressTask')" id="progressTask" class="task"></div>
         </div>
         <div class="task-container">
         <h2>testing</h2>
-        <div class="task"></div>
+        <div ondragover="allowDrop(event)" ondrop="moveTo('testingTask')" id="testingTask" class="task"></div>
         </div>
         <div class="task-container">
         <h2>done</h2>
-        <div class="task"></div>
+        <div ondragover="allowDrop(event)" ondrop="moveTo('doneTask')" id="doneTask" class="task"></div>
         </div>
     </div>
         
-    `;
-        
-    getUserStory();
-        
+    `;      
+    generateId();
+    renderHTML();      
 }
     
-function getUserStory(){
-  
+function generateId(){
+    for (let i = 0; i < userStories.length; i++) {
+        userStories[i]['id'] = i        
+    }
+      
+}
+
+function renderHTML(){
+    filterToDoTask();
+    filterProgressTask();
+    filterTestingTask();
+    filterDoneTask();
+}
+
+function filterToDoTask(){
+    let array = userStories.filter(t => t['taskTypology'] == 'toDoTask');
     let toDoTask = document.getElementById('toDoTask');
-    toDoTask.innerHTML = '';  
-    console.log('der Container von For-schleife läuft')
-   
-    
-        for (let i = 0; i < userStories.length; i++) {
-            renderToDoTask(toDoTask, i);
-            colorUserStory(i);
-            console.log('die For-schleife funktioniert!', i)
-              
-        }
-
-    
-        
+    toDoTask.innerHTML = ''; 
+    for (let i = 0; i < array.length; i++) {
+        renderTaskTypology(toDoTask, i, array);
+        colorUserStory(i, array);          
+    }
+}
+function filterProgressTask(){
+    let array = userStories.filter(t => t['taskTypology'] == 'progressTask');
+    let progressTask = document.getElementById('progressTask');
+    progressTask.innerHTML = ''; 
+    for (let i = 0; i < array.length; i++) {
+        renderTaskTypology(progressTask, i, array);
+        colorUserStory(i, array);          
+    }
+}
+function filterTestingTask(){
+    let array = userStories.filter(t => t['taskTypology'] == 'testingTask');
+    let testingTask = document.getElementById('testingTask');
+    testingTask.innerHTML = ''; 
+    for (let i = 0; i < array.length; i++) {
+        renderTaskTypology(testingTask, i, array);
+        colorUserStory(i, array);          
+    }
+}
+function filterDoneTask(){
+    let array = userStories.filter(t => t['taskTypology'] == 'doneTask');
+    let doneTask = document.getElementById('doneTask');
+    doneTask.innerHTML = ''; 
+    for (let i = 0; i < array.length; i++) {
+        renderTaskTypology(doneTask, i, array);
+        colorUserStory(i, array);          
+    }
 }
 
-function renderToDoTask(toDoTask, i) {
-    let title = userStories[i]['title'];
-    let dueDate = userStories[i]['dueDate'];
-    let category = userStories[i]['category'];
-    let collaborators = userStories[i]['assignedTo'];
-    toDoTask.innerHTML += 
-    `<div class = "user-story">
+function renderTaskTypology(taskTypology, i, array) {
+    let id = array[i]['id'];
+    let title = array[i]['title'];
+    let dueDate = array[i]['dueDate'];
+    let category = array[i]['category'];
+    let collaborators = array[i]['assignedTo'];
+    taskTypology.innerHTML += 
+    `<div draggable="true" ondragstart="startDragging(${id})" class = "user-story" id="userStory${id}">
     <strong>${title}</strong> <span>${dueDate}</span>
     <p>${category}</p>
     <p>${collaborators}</p>
@@ -87,9 +107,10 @@ function renderToDoTask(toDoTask, i) {
     `;
 }
 
-function colorUserStory(i){
-    let urgency = userStories[i]['urgency'];
-    let card = document.getElementsByClassName('user-story')[i];
+function colorUserStory(i, array){
+    let id = array[i]['id'];
+    let urgency = array[i]['urgency'];
+    let card = document.getElementById(`userStory${id}`);
     if(urgency == 'High'){
         card.style = 'background-color: rgba(200, 23, 23, 1);'
     } else if(urgency == 'Intermediate'){
@@ -107,6 +128,7 @@ function addBoard(i) {
     card['urgency'] = allTasks[i].urgency;
     card['createDat'] = allTasks[i].createdAt;
     card['description'] = allTasks[i].description;
+    card['taskTypology'] = 'toDoTask';
     userStories.push(card);
     saveUserStory();
     
@@ -127,4 +149,18 @@ function loadUserStory() {
         
     }
   
+}
+
+function startDragging(i){
+    currentDraggedElement = i;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(taskTypology){
+    userStories[currentDraggedElement]['taskTypology'] = taskTypology;
+    renderHTML();
+
 }
