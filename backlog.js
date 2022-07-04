@@ -61,11 +61,3 @@ function backlogTemplate() {
         </div>
     `;
 }
-
-
-// ##### LADEN AUS DEM BACKEND #####
-
-async function loadAllTasks() {
-    await downloadFromServer();
-    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-}

@@ -32,8 +32,6 @@ function createTask() {
         'createdAt': new Date().getTime()
     };
 
-    // allTasks.push(completeTask);
-
     task_title.value = '';
     task_due_date.value = '';
     task_category.value = '';
@@ -56,7 +54,14 @@ function saveAllTasks(completeTask) {
     allTasks.push(completeTask);
     backend.setItem('allTasks', JSON.stringify(allTasks));
 }
-// ##############################
+
+
+// ##### LADEN AUS DEM BACKEND: #####
+
+async function loadAllTasks() {
+    await downloadFromServer();
+    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+}
 
 
 function changePhoto() {

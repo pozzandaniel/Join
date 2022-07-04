@@ -41,6 +41,7 @@ function renderBoard(){
     renderHTML();      
 }
     
+
 function generateId(){
     for (let i = 0; i < userStories.length; i++) {
         userStories[i]['id'] = i        
@@ -48,12 +49,14 @@ function generateId(){
       
 }
 
+
 function renderHTML(){
     filterToDoTask();
     filterProgressTask();
     filterTestingTask();
     filterDoneTask();
 }
+
 
 function filterToDoTask(){
     let array = userStories.filter(t => t['taskTypology'] == 'toDoTask');
@@ -64,6 +67,8 @@ function filterToDoTask(){
         colorUserStory(i, array);          
     }
 }
+
+
 function filterProgressTask(){
     let array = userStories.filter(t => t['taskTypology'] == 'progressTask');
     let progressTask = document.getElementById('progressTask');
@@ -73,6 +78,8 @@ function filterProgressTask(){
         colorUserStory(i, array);          
     }
 }
+
+
 function filterTestingTask(){
     let array = userStories.filter(t => t['taskTypology'] == 'testingTask');
     let testingTask = document.getElementById('testingTask');
@@ -82,6 +89,8 @@ function filterTestingTask(){
         colorUserStory(i, array);          
     }
 }
+
+
 function filterDoneTask(){
     let array = userStories.filter(t => t['taskTypology'] == 'doneTask');
     let doneTask = document.getElementById('doneTask');
@@ -91,6 +100,7 @@ function filterDoneTask(){
         colorUserStory(i, array);          
     }
 }
+
 
 function renderTaskTypology(taskTypology, i, array) {
     let id = array[i]['id'];
@@ -107,6 +117,7 @@ function renderTaskTypology(taskTypology, i, array) {
     `;
 }
 
+
 function colorUserStory(i, array){
     let id = array[i]['id'];
     let urgency = array[i]['urgency'];
@@ -120,6 +131,7 @@ function colorUserStory(i, array){
     }
 }
 
+
 function addBoard(i) {
     card['title'] = allTasks[i].title;
     card['dueDate'] = allTasks[i].dueDate;
@@ -131,15 +143,15 @@ function addBoard(i) {
     card['taskTypology'] = 'toDoTask';
     userStories.push(card);
     saveUserStory();
-    
-    
 }
+
 
 function saveUserStory(){
     let userStoryAsString = JSON.stringify(userStories);
     localStorage.setItem('userStories', userStoryAsString);
     console.log('userStories ', userStories, '; userStoriesAsString ', userStoryAsString);
 }
+
 
 function loadUserStory() {
     let userStoryAsString = localStorage.getItem('userStories');
@@ -148,19 +160,37 @@ function loadUserStory() {
         console.log('loaded userstories:', userStories);
         
     }
-  
 }
+
+
+// ##### SPEICHERN IM BACKEND: #####
+
+// setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
+
+// function saveUserStory(){
+//     backend.setItem('userStories', JSON.stringify(userStories));
+// }
+
+
+// ##### LADEN AUS DEM BACKEND: #####
+
+// async function loadUserStory() {
+//     await downloadFromServer();
+//     userStories = JSON.parse(backend.getItem('userStories')) || [];
+// }
+
 
 function startDragging(i){
     currentDraggedElement = i;
 }
 
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+
 function moveTo(taskTypology){
     userStories[currentDraggedElement]['taskTypology'] = taskTypology;
     renderHTML();
-
 }
