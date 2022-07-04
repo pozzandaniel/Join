@@ -8,11 +8,10 @@ function renderBacklog() {
 
 function renderBacklogTasks() {
     let workspace = document.getElementById('workspace');
-   
 
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
-        
+
         workspace.innerHTML += /*html*/`
             <div onclick="addBoard(${i}); deleteBacklogTask(${i})" class="backlog-table-tasks">
                 <div>
@@ -29,11 +28,11 @@ function renderBacklogTasks() {
     }
 }
 
-function deleteBacklogTask(i){
-    console.log(allTasks[i]);
+
+function deleteBacklogTask(i) {
     allTasks.splice(i, 1);
-    saveAllTasks();
     renderBacklog();
+    backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
 
@@ -64,12 +63,9 @@ function backlogTemplate() {
 }
 
 
-function loadAllTasks() {
-    let allTasksAsString = localStorage.getItem('allTasks');
+// ##### LADEN AUS DEM BACKEND #####
 
-    if (allTasksAsString) {
-        allTasks = JSON.parse(allTasksAsString);
-        console.log('loaded all tasks:', allTasks);
-    }  
+async function loadAllTasks() {
+    await downloadFromServer();
+    allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }
-

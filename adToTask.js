@@ -32,7 +32,7 @@ function createTask() {
         'createdAt': new Date().getTime()
     };
 
-    allTasks.push(completeTask);
+    // allTasks.push(completeTask);
 
     task_title.value = '';
     task_due_date.value = '';
@@ -43,17 +43,20 @@ function createTask() {
 
     console.log(allTasks);
 
-    // saveJSONToServer();
-
-    saveAllTasks();
+    saveAllTasks(completeTask);
     renderBacklog();
 }
 
 
-function saveAllTasks() {
-    let allTasksAsString = JSON.stringify(allTasks);
-    localStorage.setItem('allTasks', allTasksAsString)
+// ##### SPEICHERN IM BACKEND: #####
+
+setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
+
+function saveAllTasks(completeTask) {
+    allTasks.push(completeTask);
+    backend.setItem('allTasks', JSON.stringify(allTasks));
 }
+// ##############################
 
 
 function changePhoto() {
