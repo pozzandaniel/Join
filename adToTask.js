@@ -1,4 +1,5 @@
 let allTasks = [];
+let countId = 0;
 
 function renderAdToTask() {
     let adToTask = document.getElementById('workspace');
@@ -13,6 +14,7 @@ function openDropdown() {
 
 
 function createTask() {
+    countId++;
     let task_title = document.getElementById('title-input');
     let task_due_date = document.getElementById('date-input');
     let task_category = document.getElementById('category-input');
@@ -23,6 +25,7 @@ function createTask() {
     document.getElementById('assigned-input').classList.add('d-none');
 
     let completeTask = {
+        'id': countId,
         'title': task_title.value,
         'dueDate': task_due_date.value,
         'category': task_category.value,
@@ -53,6 +56,7 @@ setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
 function saveAllTasks(completeTask) {
     allTasks.push(completeTask);
     backend.setItem('allTasks', JSON.stringify(allTasks));
+    backend.setItem('countId', JSON.stringify(countId));
 }
 
 
@@ -61,6 +65,7 @@ function saveAllTasks(completeTask) {
 async function loadAllTasks() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    countId = JSON.parse(backend.getItem('countId')) || [];
 }
 
 

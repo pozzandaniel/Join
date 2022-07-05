@@ -1,16 +1,6 @@
 let userStories = [];
 let currentDraggedElement;
-let card = {
-    'id': '',
-    'taskTypology': '',
-    'title': '',
-    'dueDate': '',
-    'category': '',
-    'assignedTo': '',
-    'urgency': '',
-    'createDats': '',
-    'description': ''
-};
+
 
 
 function renderBoard(){
@@ -37,17 +27,17 @@ function renderBoard(){
     </div>
         
     `;      
-    generateId();
+    // generateId();
     renderHTML();      
 }
     
 
-function generateId(){
-    for (let i = 0; i < userStories.length; i++) {
-        userStories[i]['id'] = i        
-    }
+// function generateId(){
+//     for (let i = 0; i < userStories.length; i++) {
+//         userStories[i]['id'] = i        
+//     }
       
-}
+// }
 
 
 function renderHTML(){
@@ -113,8 +103,10 @@ function renderTaskTypology(taskTypology, i, array) {
     <strong>${title}</strong> <span>${dueDate}</span>
     <p>${category}</p>
     <p>${collaborators}</p>
+    <p style:"cursor:pointer" onclick="deleteUserStory(${id})">DELETE</p>
     </div>
     `;
+   
 }
 
 
@@ -133,6 +125,18 @@ function colorUserStory(i, array){
 
 
 function addBoard(i) {
+    let card = {
+        'id': '',
+        'taskTypology': '',
+        'title': '',
+        'dueDate': '',
+        'category': '',
+        'assignedTo': '',
+        'urgency': '',
+        'createDats': '',
+        'description': ''
+    };
+    card['id'] = allTasks[i].id;
     card['title'] = allTasks[i].title;
     card['dueDate'] = allTasks[i].dueDate;
     card['category'] = allTasks[i].category;
@@ -146,42 +150,45 @@ function addBoard(i) {
 }
 
 
-function saveUserStory(){
-    let userStoryAsString = JSON.stringify(userStories);
-    localStorage.setItem('userStories', userStoryAsString);
-    console.log('userStories ', userStories, '; userStoriesAsString ', userStoryAsString);
-}
+// function saveUserStory(){
+//     let userStoryAsString = JSON.stringify(userStories);
+//     localStorage.setItem('userStories', userStoryAsString);
+//     console.log('userStories ', userStories, '; userStoriesAsString ', userStoryAsString);
+// }
 
 
-function loadUserStory() {
-    let userStoryAsString = localStorage.getItem('userStories');
-    if(userStoryAsString){
-        userStories = JSON.parse(userStoryAsString);
-        console.log('loaded userstories:', userStories);
+// function loadUserStory() {
+//     let userStoryAsString = localStorage.getItem('userStories');
+//     if(userStoryAsString){
+//         userStories = JSON.parse(userStoryAsString);
+//         console.log('loaded userstories:', userStories);
         
-    }
-}
+//     }
+// }
 
 
 // ##### SPEICHERN IM BACKEND: #####
 
-// setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
+setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
 
-// function saveUserStory(){
-//     backend.setItem('userStories', JSON.stringify(userStories));
-// }
+function saveUserStory(){
+    let userStoriesString = JSON.stringify(userStories);
+    backend.setItem('userStories', userStoriesString);
+    console.log('userStories: ', userStories, ' userStoriesString: ', userStoriesString);
+
+}
 
 
 // ##### LADEN AUS DEM BACKEND: #####
 
-// async function loadUserStory() {
-//     await downloadFromServer();
-//     userStories = JSON.parse(backend.getItem('userStories')) || [];
-// }
+async function loadUserStory() {
+    await downloadFromServer();
+    userStories = JSON.parse(backend.getItem('userStories')) || [];
+}
 
 
-function startDragging(i){
-    currentDraggedElement = i;
+function startDragging(id){
+    currentDraggedElement = id;
 }
 
 
@@ -191,6 +198,18 @@ function allowDrop(ev) {
 
 
 function moveTo(taskTypology){
-    userStories[currentDraggedElement]['taskTypology'] = taskTypology;
+
+    let array = userStories.filter(t => t['id'] == currentDraggedElement);
+    array[0]['taskTypology'] = taskTypology;
+    // console.log('array: ', array, ' draggedElement: ', currentDraggedElement);
+    // userStories[currentDraggedElement]['taskTypology'] = taskTypology;
+    renderHTML();
+}
+
+function deleteUserStory(id){
+    let array = userStories.filter(t => t['id'] == id);
+    let index = userStories.indexOf(array[0]);
+    userStories.splice(index, 1);
+    console.log('array: ', array, ' index: ', index);
     renderHTML();
 }
