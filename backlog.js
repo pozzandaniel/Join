@@ -1,8 +1,8 @@
-function renderBacklog() {
+async function renderBacklog() {
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = backlogTemplate();
 
-    renderBacklogTasks();
+    await renderBacklogTasks();
 }
 
 
@@ -31,8 +31,8 @@ function renderBacklogTasks() {
 
 function deleteBacklogTask(i) {
     allTasks.splice(i, 1);
-    renderBacklog();
     backend.setItem('allTasks', JSON.stringify(allTasks));
+    renderBacklog();
 }
 
 
