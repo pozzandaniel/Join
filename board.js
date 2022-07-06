@@ -3,8 +3,8 @@ let currentDraggedElement;
 
 
 
-function renderBoard(){
-    loadUserStory();
+async function renderBoard(){
+    await loadUserStory();
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = `
     <div class="board-container">
@@ -203,6 +203,7 @@ function moveTo(taskTypology){
     array[0]['taskTypology'] = taskTypology;
     // console.log('array: ', array, ' draggedElement: ', currentDraggedElement);
     // userStories[currentDraggedElement]['taskTypology'] = taskTypology;
+    saveUserStory();
     renderHTML();
 }
 
@@ -211,5 +212,6 @@ function deleteUserStory(id){
     let index = userStories.indexOf(array[0]);
     userStories.splice(index, 1);
     console.log('array: ', array, ' index: ', index);
+    saveUserStory();
     renderHTML();
 }
