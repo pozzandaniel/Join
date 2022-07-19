@@ -1,3 +1,5 @@
+
+
 async function renderBacklog() {
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = backlogTemplate();
@@ -13,7 +15,7 @@ function renderBacklogTasks() {
         const task = allTasks[i];
 
         workspace.innerHTML += /*html*/`
-            <div onclick="addBoard(${i}); deleteBacklogTask(${i})" class="backlog-table-tasks">
+            <div onclick="addBoard(${i}), deleteBacklogTask(${i})" class="backlog-table-tasks">
                 <div>
                     <p>${task['assignedTo']}</p>
                 </div>
@@ -24,8 +26,10 @@ function renderBacklogTasks() {
                     <p>${task['description']}</p>
                 </div>
             </div>
+           
         `;
     }
+
 }
 
 
@@ -33,6 +37,9 @@ function deleteBacklogTask(i) {
     allTasks.splice(i, 1);
     backend.setItem('allTasks', JSON.stringify(allTasks));
     renderBacklog();
+    console.log(allTasks);
+    callDialog();
+    
 }
 
 
@@ -40,6 +47,7 @@ function deleteBacklogTask(i) {
 
 function backlogTemplate() {
     return /*html*/ `
+
         <div class="backlog-container">
             <div class="backlog-header">
                 <h1>Backlog</h1>
@@ -57,7 +65,19 @@ function backlogTemplate() {
                     <h2>Details</h2>
                 </div>
             </div>
+            <div id="dialogBacklog" class="dialog-backlog d-none">
+                <p>Eine User Story wurde in Ihrem Board generiert</p>
+            </div>
 
         </div>
     `;
+}
+
+function callDialog(){
+    let dialog = document.getElementById('dialogBacklog');
+
+    dialog.classList.remove('d-none');
+    setTimeout(()=>{
+        dialog.classList.add('d-none');
+    }, 2000);
 }

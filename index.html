@@ -16,6 +16,9 @@
     <script src="./help.js"></script>
     <script src="./board.js"></script>
     <title>Join</title>
+    <link rel="icon" type="image/x-icon" href="./img/Icons/faviconblau.ico">
+
+
 </head>
 
 <script>
@@ -23,7 +26,6 @@
     function start(){
         // liveRendering();
         renderAccount();
-        loadAllTasks();
         renderBoard();
     }
 </script>
@@ -54,25 +56,33 @@
 
         </div>
 
-        <div class="menu">
-            <div>
-                <img id="logo" src="./img/Icons/logo.png" alt="">
-                <a class="menu_tags" onclick="renderBoard()">Board</a>
-                <div onclick="renderBacklog()" class="menu_tags">Backlog</div>
-                <div onclick="renderAdToTask()" class="menu_tags">Add Task</div>
-                <div onclick="renderHelp()" class="menu_tags">Help</div>
-            </div>
-            <img src ="" id="user_img" class="profil_img">
-            <div class="footer-sidebar">
-                <div class="menu_tags font-size-07rem" onclick="impressum()" href="#">Impressum</div>
-                <div class="menu_tags font-size-07rem" onclick="privacy()" href="#">Privacy Policy</div>
-            </div>
+        
+            <div class="menu">	
+                <div class="mobileview">	
+                    <div class="mobilemenuu" id="mobilmen">	
+                        <img onclick="showMenuu()" id="loggo" class="loggo" src="./img/Icons/burger.png">	
+                        <div id="overmenu" class="overlay">	
+                            <a class="menu_tags7" onclick="renderBoard()">Board</a>	
+                            <div onclick="renderBacklog()" class="menu_tags7">Backlog</div>	
+                            <div onclick="renderAdToTask()" class="menu_tags7">Add Task</div>	
+                            <div onclick="renderHelp()" class="menu_tags7">Help</div>	
+                            <button onclick="closeMenuu()" class="close-button">Close</button>	
+                        </div>	
+                    </div>	
+                    <img id="logo" class="logo" src="./img/Icons/logo.png" alt="">	
+                    <a class="menu_tags" onclick="renderBoard()">Board</a>	
+                    <div onclick="renderBacklog()" class="menu_tags">Backlog</div>	
+                    <div onclick="renderAdToTask()" class="menu_tags">Add Task</div>	
+                    <div onclick="renderHelp()" class="menu_tags">Help</div>	
+                </div>	
+                <img src="" id="user_img" class="profil_img">	
+                <div class="footer-sidebar">	
+                    <div class="menu_tags1 font-size-07rem" onclick="impressum()" href="#">Impressum</div>	
+                    <div class="menu_tags2 font-size-07rem" onclick="privacy()" href="#">Privacy Policy</div>	
+                </div>	
+            </div>	
+            <div id="workspace" class="workspace">	</div>
         </div>
-        <div id="workspace" class="workspace">
-
-        </div>
-
-    </div>
 </body>
 
 </html>
