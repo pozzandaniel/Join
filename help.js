@@ -1,15 +1,11 @@
 function renderHelp() {
-
     let help = document.getElementById('workspace');
     help.innerHTML = '';
-    help.innerHTML += HelpTemplate();
-
-
-
-
+    help.innerHTML += helpTemplate();
 }
 
-function HelpTemplate() {
+
+function helpTemplate() {
     return `
     
     
@@ -23,14 +19,5 @@ function HelpTemplate() {
     <p>In the board you can see the tasks that have been added from the backlog. You can simply drag them into the desired column.</p>
 </div>
 </div>
-    
-    
-    
-    
     `;
-
-
-
-
-
 }
