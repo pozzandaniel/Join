@@ -61,7 +61,9 @@ function filterToDoTask(){
 function filterProgressTask(){
     let array = userStories.filter(t => t['taskTypology'] == 'progressTask');
     let progressTask = document.getElementById('progressTask');
-    progressTask.innerHTML = ''; 
+
+    progressTask.innerHTML = '';
+
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(progressTask, i, array);
         colorUserStory(i, array);          
@@ -72,7 +74,9 @@ function filterProgressTask(){
 function filterTestingTask(){
     let array = userStories.filter(t => t['taskTypology'] == 'testingTask');
     let testingTask = document.getElementById('testingTask');
-    testingTask.innerHTML = ''; 
+
+    testingTask.innerHTML = '';
+    
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(testingTask, i, array);
         colorUserStory(i, array);          
