@@ -2,9 +2,9 @@ function impressum(){
     removeClasses_pp();
     let work_array = document.getElementsByClassName('workspace');
     work_array[0].innerHTML = '';
-    work_array[0].innerHTML += impressTempl()
-    
+    work_array[0].innerHTML += impressTempl() 
 }
+
 
 function privacy(){
     let menu = document.getElementsByClassName('menu')[0];
@@ -15,8 +15,8 @@ function privacy(){
     // work_array[0].classList.add('workspace-pp');
     // menu.classList.add('menu-pp');
     // container.classList.add('container-pp');
-
 }
+
 
 function removeClasses_pp(){
     let menu = document.getElementsByClassName('menu')[0];
@@ -25,9 +25,8 @@ function removeClasses_pp(){
     work_array[0].classList.remove('workspace-pp');
     menu.classList.remove('menu-pp');
     container.classList.remove('container-pp');
-
-
 }
+
 
 function impressTempl(){
     return `
@@ -43,6 +42,7 @@ function impressTempl(){
     </div>
     `;
 }
+
 
 function privacyTempl(){
     return `

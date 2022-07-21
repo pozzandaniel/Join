@@ -2,7 +2,6 @@ let userStories = [];
 let currentDraggedElement;
 
 
-
 async function renderBoard(){
     await loadUserStory();
     let workspace = document.getElementById('workspace');
@@ -62,7 +61,9 @@ function filterToDoTask(){
 function filterProgressTask(){
     let array = userStories.filter(t => t['taskTypology'] == 'progressTask');
     let progressTask = document.getElementById('progressTask');
-    progressTask.innerHTML = ''; 
+
+    progressTask.innerHTML = '';
+
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(progressTask, i, array);
         colorUserStory(i, array);          
@@ -73,7 +74,9 @@ function filterProgressTask(){
 function filterTestingTask(){
     let array = userStories.filter(t => t['taskTypology'] == 'testingTask');
     let testingTask = document.getElementById('testingTask');
-    testingTask.innerHTML = ''; 
+
+    testingTask.innerHTML = '';
+    
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(testingTask, i, array);
         colorUserStory(i, array);          
@@ -106,7 +109,6 @@ function renderTaskTypology(taskTypology, i, array) {
     <p style:"cursor:pointer" onclick="deleteUserStory(${id})">DELETE</p>
     </div>
     `;
-   
 }
 
 
@@ -168,19 +170,16 @@ function addBoard(i) {
 
 
 // ##### SPEICHERN IM BACKEND: #####
-
 setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
 
 function saveUserStory(){
     let userStoriesString = JSON.stringify(userStories);
     backend.setItem('userStories', userStoriesString);
     console.log('userStories: ', userStories, ' userStoriesString: ', userStoriesString);
-
 }
 
 
 // ##### LADEN AUS DEM BACKEND: #####
-
 async function loadUserStory() {
     await downloadFromServer();
     userStories = JSON.parse(backend.getItem('userStories')) || [];
@@ -198,7 +197,6 @@ function allowDrop(ev) {
 
 
 function moveTo(taskTypology){
-
     let array = userStories.filter(t => t['id'] == currentDraggedElement);
     array[0]['taskTypology'] = taskTypology;
     // console.log('array: ', array, ' draggedElement: ', currentDraggedElement);
@@ -206,6 +204,7 @@ function moveTo(taskTypology){
     saveUserStory();
     renderHTML();
 }
+
 
 function deleteUserStory(id){
     let array = userStories.filter(t => t['id'] == id);
