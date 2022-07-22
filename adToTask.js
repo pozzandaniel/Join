@@ -15,15 +15,16 @@ function openDropdown() {
 
 }
 
+
 function requestForm() {
     event.preventDefault();
-    if(dropdown == true){
+    if (dropdown == true) {
         createTask();
     } else {
         document.getElementById('assigned-input').classList.remove('d-none');
         document.getElementById('assigned-input').required = true;
         document.getElementById('dialogAdTask').classList.remove('d-none');
-        
+
     }
 }
 
@@ -36,38 +37,35 @@ function createTask() {
     let task_urgency = document.getElementById('urgency-input');
     let task_description = document.getElementById('description-input');
     let task_assigned = document.getElementById('assigned-input');
-    
-    document.getElementById('assigned-input').classList.add('d-none');
-    
-        let completeTask = {
-            'id': countId,
-            'title': task_title.value,
-            'dueDate': task_due_date.value,
-            'category': task_category.value,
-            'urgency': task_urgency.value,
-            'description': task_description.value,
-            'assignedTo': task_assigned.value,
-            'createdAt': new Date().getTime()
-        };
-    
-        task_title.value = '';
-        task_due_date.value = '';
-        task_category.value = '';
-        task_urgency.value = '';
-        task_description.value = '';
-        task_assigned.value = '';
-    
-        console.log(allTasks);
-        dropdown = false;
-        saveAllTasks(completeTask);
-        renderBacklog();
 
-    
+    document.getElementById('assigned-input').classList.add('d-none');
+
+    let completeTask = {
+        'id': countId,
+        'title': task_title.value,
+        'dueDate': task_due_date.value,
+        'category': task_category.value,
+        'urgency': task_urgency.value,
+        'description': task_description.value,
+        'assignedTo': task_assigned.value,
+        'createdAt': new Date().getTime()
+    };
+
+    task_title.value = '';
+    task_due_date.value = '';
+    task_category.value = '';
+    task_urgency.value = '';
+    task_description.value = '';
+    task_assigned.value = '';
+
+    console.log(allTasks);
+    dropdown = false;
+    saveAllTasks(completeTask);
+    renderBacklog();
 }
 
 
 // ##### SPEICHERN IM BACKEND: #####
-
 setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
 
 function saveAllTasks(completeTask) {
@@ -78,7 +76,6 @@ function saveAllTasks(completeTask) {
 
 
 // ##### LADEN AUS DEM BACKEND: #####
-
 async function loadAllTasks() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
@@ -96,18 +93,18 @@ function changePhoto() {
 
     photo.classList.remove('d-none')
 
-    if (input.value == 'Kevin') {	
-        photo.src="img/Icons/kevin.jpg"	
-        photo.src = "img/Icons/kevin.jpg"	
-    } else if (input.value == 'Feros') {	
-        photo.src="img/Icons/feros.jpeg"	
-        photo.src = "img/Icons/feros.jpeg"	
-    } else if (input.value == 'Daniel') {	
-        photo.src="img/Icons/daniel.jpg"	
-        photo.src = "img/Icons/daniel.jpg"	
-    } else if (input.value == 'Norbert') {	
-        photo.src="img/Icons/norbert.jpg"	
-        photo.src = "img/Icons/norbert.jpg"	
+    if (input.value == 'Kevin') {
+        photo.src = "img/Icons/kevin.jpg"
+        photo.src = "img/Icons/kevin.jpg"
+    } else if (input.value == 'Feros') {
+        photo.src = "img/Icons/feros.jpeg"
+        photo.src = "img/Icons/feros.jpeg"
+    } else if (input.value == 'Daniel') {
+        photo.src = "img/Icons/daniel.jpg"
+        photo.src = "img/Icons/daniel.jpg"
+    } else if (input.value == 'Norbert') {
+        photo.src = "img/Icons/norbert.jpg"
+        photo.src = "img/Icons/norbert.jpg"
     };
 }
 
@@ -192,12 +189,14 @@ function adToTaskTemplate() {
 
         </div>
     `;
-
 }
 
-function showMenuu() {	
-    document.getElementById('overmenu').classList.add('showoverlay');	
-}	
-function closeMenuu() {	
-    document.getElementById('overmenu').classList.remove('showoverlay');	
+
+function showMenu() {
+    document.getElementById('overmenu').classList.add('showoverlay');
+}
+
+
+function closeMenu() {
+    document.getElementById('overmenu').classList.remove('showoverlay');
 } 

@@ -1,5 +1,3 @@
-
-
 async function renderBacklog() {
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = backlogTemplate();
@@ -31,7 +29,6 @@ async function renderBacklogTasks() {
            
         `;
     }
-
 }
 
 
@@ -41,10 +38,7 @@ function deleteBacklogTask(i) {
     renderBacklog();
     console.log(allTasks);
     callDialog();
-    
 }
-
-
 
 
 function backlogTemplate() {
@@ -75,11 +69,12 @@ function backlogTemplate() {
     `;
 }
 
-function callDialog(){
+
+function callDialog() {
     let dialog = document.getElementById('dialogBacklog');
 
     dialog.classList.remove('d-none');
-    setTimeout(()=>{
+    setTimeout(() => {
         dialog.classList.add('d-none');
     }, 2000);
 }
