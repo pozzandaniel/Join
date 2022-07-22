@@ -1,53 +1,15 @@
 let userStories = [];
 let currentDraggedElement;
+let pathUser;
 
-
-async function renderBoard(){
-    await loadUserStory();
-    let workspace = document.getElementById('workspace');
-    workspace.innerHTML = `
-    <div class="board-container">
-    <div  class="task-container">
-            <h2>to do</h2>
-            <div ondragover="allowDrop(event)" ondrop="moveTo('toDoTask')" id="toDoTask" class="task"></div>
-            </div>
-        <div class="task-container">
-        <h2>in progress</h2>
-            <div ondragover="allowDrop(event)" ondrop="moveTo('progressTask')" id="progressTask" class="task"></div>
-        </div>
-        <div class="task-container">
-        <h2>testing</h2>
-        <div ondragover="allowDrop(event)" ondrop="moveTo('testingTask')" id="testingTask" class="task"></div>
-        </div>
-        <div class="task-container">
-        <h2>done</h2>
-        <div ondragover="allowDrop(event)" ondrop="moveTo('doneTask')" id="doneTask" class="task"></div>
-        </div>
-    </div>
-        
-    `;      
-    // generateId();
-    renderHTML();      
-}
-    
-
-// function generateId(){
-//     for (let i = 0; i < userStories.length; i++) {
-//         userStories[i]['id'] = i        
-//     }
-      
-// }
-
-
-function renderHTML(){
+function renderHTML() {
     filterToDoTask();
     filterProgressTask();
     filterTestingTask();
     filterDoneTask();
 }
 
-
-function filterToDoTask(){
+function filterToDoTask() {
     let array = userStories.filter(t => t['taskTypology'] == 'toDoTask');
     let toDoTask = document.getElementById('toDoTask');
     toDoTask.innerHTML = ''; 
@@ -57,34 +19,27 @@ function filterToDoTask(){
     }
 }
 
-
-function filterProgressTask(){
+function filterProgressTask() {
     let array = userStories.filter(t => t['taskTypology'] == 'progressTask');
     let progressTask = document.getElementById('progressTask');
-
-    progressTask.innerHTML = '';
-
+    progressTask.innerHTML = ''; 
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(progressTask, i, array);
         colorUserStory(i, array);          
     }
 }
 
-
-function filterTestingTask(){
+function filterTestingTask() {
     let array = userStories.filter(t => t['taskTypology'] == 'testingTask');
     let testingTask = document.getElementById('testingTask');
-
-    testingTask.innerHTML = '';
-    
+    testingTask.innerHTML = ''; 
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(testingTask, i, array);
         colorUserStory(i, array);          
     }
 }
 
-
-function filterDoneTask(){
+function filterDoneTask() {
     let array = userStories.filter(t => t['taskTypology'] == 'doneTask');
     let doneTask = document.getElementById('doneTask');
     doneTask.innerHTML = ''; 
@@ -93,7 +48,6 @@ function filterDoneTask(){
         colorUserStory(i, array);          
     }
 }
-
 
 function renderTaskTypology(taskTypology, i, array) {
     let id = array[i]['id'];
@@ -111,8 +65,7 @@ function renderTaskTypology(taskTypology, i, array) {
     `;
 }
 
-
-function colorUserStory(i, array){
+function colorUserStory(i, array) {
     let id = array[i]['id'];
     let urgency = array[i]['urgency'];
     let card = document.getElementById(`userStory${id}`);
@@ -124,7 +77,6 @@ function colorUserStory(i, array){
         card.style = 'background-color: rgba(23, 200, 23, 1);'
     }
 }
-
 
 function addBoard(i) {
     let card = {
@@ -151,42 +103,24 @@ function addBoard(i) {
     saveUserStory();
 }
 
-
-// function saveUserStory(){
-//     let userStoryAsString = JSON.stringify(userStories);
-//     localStorage.setItem('userStories', userStoryAsString);
-//     console.log('userStories ', userStories, '; userStoriesAsString ', userStoryAsString);
-// }
-
-
-// function loadUserStory() {
-//     let userStoryAsString = localStorage.getItem('userStories');
-//     if(userStoryAsString){
-//         userStories = JSON.parse(userStoryAsString);
-//         console.log('loaded userstories:', userStories);
-        
-//     }
-// }
-
-
 // ##### SPEICHERN IM BACKEND: #####
+
 setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
 
-function saveUserStory(){
+function saveUserStory() {
     let userStoriesString = JSON.stringify(userStories);
     backend.setItem('userStories', userStoriesString);
     console.log('userStories: ', userStories, ' userStoriesString: ', userStoriesString);
 }
 
-
 // ##### LADEN AUS DEM BACKEND: #####
+
 async function loadUserStory() {
     await downloadFromServer();
     userStories = JSON.parse(backend.getItem('userStories')) || [];
 }
 
-
-function startDragging(id){
+function startDragging(id) {
     currentDraggedElement = id;
 }
 
@@ -195,18 +129,14 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-
-function moveTo(taskTypology){
+function moveTo(taskTypology) {
     let array = userStories.filter(t => t['id'] == currentDraggedElement);
     array[0]['taskTypology'] = taskTypology;
-    // console.log('array: ', array, ' draggedElement: ', currentDraggedElement);
-    // userStories[currentDraggedElement]['taskTypology'] = taskTypology;
     saveUserStory();
     renderHTML();
 }
 
-
-function deleteUserStory(id){
+function deleteUserStory(id) {
     let array = userStories.filter(t => t['id'] == id);
     let index = userStories.indexOf(array[0]);
     userStories.splice(index, 1);
@@ -214,3 +144,12 @@ function deleteUserStory(id){
     saveUserStory();
     renderHTML();
 }
+
+// function transferUserImage() {
+//     let string = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);
+//     pathUser = string.slice(1);
+//     document.getElementById('user_img').src = pathUser;
+//     backend.setItem('pathUser', pathUser);
+// }
+
+

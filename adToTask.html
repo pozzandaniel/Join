@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <link rel="stylesheet" href="./style/adToTask.css">
+        <link rel="stylesheet" href="./style/backlog.css">
+        <link rel="stylesheet" href="./style/board.css">
+        <link rel="stylesheet" href="./style/datenschutz.css">
+        <link rel="stylesheet" href="./style/font.css">
+        <link rel="stylesheet" href="./style/general.css">
+        <link rel="stylesheet" href="./style/impressum.css">
+        <link rel="stylesheet" href="./style/login.css">
+        <link rel="stylesheet" href="./style/mobile.css">
+        <link rel="stylesheet" href="./templates/menu.css">
+        <script src="./mini_backend.js"></script>
+        <script src="./templates/script.js"></script>
+        <script src="./script/adToTask.js"></script>
+        <script src="./script/backlog.js"></script>
+        <script src="./script/board.js"></script>
+        <script src="./script/login.js"></script>
+
+        <title>Join</title>
+        <link rel="icon" type="image/x-icon" href="./assets/images/faviconblau.ico">
+    
+    </head>
+
+    <body onload="start()">
+        <div id="container" class="container">
+
+            <div id="menu" class="menu">
+                <div class="menu-content background_color" w3-include-html="./templates/menu.html"></div>
+            </div>
+            <div id="workspace" class="workspace">
+                <div class="add-task-main-container">
+        
+                    <form onsubmit="requestForm()" class="add-task-container">
+        
+                        <div class="top-row">
+                            <div class="title-input-container">
+                                <h2>Title</h2>
+                                <input required id="title-input" type="text">
+                            </div>
+                            <div class="date-container">
+                                <h2>Due Date</h2>
+                                <input required id="date-input" type="date">
+                            </div>
+                        </div>
+        
+        
+                        <div class="mid-row">
+                            <div class="category-container">
+                                <h2>Category</h2>
+                                <select name="" id="category-input">
+                                    <option value="Management">Management</option>
+                                    <option value="Software Development">Software Development</option>
+                                    <option value="UX/UI Design">UX/UI Design</option>
+                                    <option value="Human Ressources">Human Ressources</option>
+                                </select>
+                            </div>
+                            <div class="urgency-container">
+                                <h2>Urgency</h2>
+                                <select name="" id="urgency-input">
+                                    <option value="High">High</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+        
+        
+                        <div class ="bottom-row">
+                            <div class="description-container">
+                                <h2>Description</h2>
+                                <textarea required name="" id="description-input" cols="30" rows="10"></textarea>
+                            </div>
+    
+                            <div class="assigned-to-container">
+                                <h2>Assigned to</h2>
+                                <div class="placeholder-container">
+    
+                                    <div class="icon-container">
+                                        <div id="addButtonCont" onclick="openDropdown()" class="add-button-container">
+                                            <img id="addButton"  class="add-button" src="./assets/images/add-icon.png" alt="">
+                                        </div>
+                                    
+                                        <div id="avatarPicker" class="choose-name-input d-none">
+                                            <div class="avatar-box">
+                                                <img onclick="selectAvatar('kevin')" class="profilepicture" id="kevin" src="./assets/images/kevin.jpg" alt="">
+                                                <img onclick="selectAvatar('feros')" class="profilepicture" id="feros" src="./assets/images/feros.jpeg" alt="">
+                                                <img onclick="selectAvatar('norbert')" class="profilepicture" id="norbert" src="./assets/images/norbert.jpg" alt="">
+                                                <img onclick="selectAvatar('daniel')" class="profilepicture" id="daniel" src="./assets/images/daniel.jpg" alt="">
+                                            </div>
+                                            <div id="dialogAdTask" class="dialog-adToTask d-none">
+                                                <p>Dem Feld <span>Assigned to</span> muss jemanden zugewiesen werden.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="button-container">
+                                        <button>Cancel</button>
+                                        <button id="button-form">Create Task</button>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>  
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

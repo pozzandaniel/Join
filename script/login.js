@@ -1,5 +1,7 @@
+let checkbox; 
 let account;
-
+let currentuser;
+    
 async function renderAccount() {
     let url = './account.json';
     let response = await fetch(url);
@@ -10,39 +12,35 @@ async function renderAccount() {
 function login() {
     let username = document.getElementById('username').value;
     let userpassword = document.getElementById('userpassword').value;
-    //   let userImg = document.getElementById('user_img').src
+    if(account.some( user => user.name == username && user.password == userpassword )) {
+        account.forEach(element => {
+            if (username == element.name) {
+                console.log(element.bild);
+                saveImagePath(element.bild);
 
-    if (account.some(user => user.name == username && user.password == userpassword)) {
-        document.getElementById('loginContainer').classList.add('display_none');
-        // document.getElementById('user_img').src = account[user].bild;
-        //console.log(account[0].name);
+                setTimeout( () => {
+                    window.location = `./board.html`;
+                }, 1500)
+            }
+        });
     }
     else {
-        //NO USER FOUND WITH USERNAME AND PASSWORD
         alert('NO USER FOUND WITH USERNAME AND PASSWORD');
-    }
-
-
-    account.forEach(element => {
-
-        if (username == element.name) {
-            document.getElementById('user_img').src = element.bild;
-        }
-    });
+    } 
 }
 
-
-let checkbox;
-
+function saveImagePath(imagePath) {
+    localStorage.setItem('userPath', imagePath);
+}
 
 function switchToSignUp() {
     let textButton = document.getElementById('button');
-    checkbox = document.getElementById('newAccount');
-
+    checkbox =  document.getElementById('newAccount');
+    
     if (checkbox.checked == true) {
         textButton.innerHTML = "Sign Up";
         document.getElementById('button').type = 'button';
-        document.getElementById('button').addEventListener("click", addAccount);
+        document.getElementById('button').addEventListener("click", AddAccount);
 
     } else {
         textButton.innerHTML = "Login In";
@@ -50,31 +48,28 @@ function switchToSignUp() {
     }
 }
 
-
 class Guest {
     name;
     password;
     bild;
 }
 
-
-function addAccount(username, password) {
+function AddAccount(username, password) {
     username = document.getElementById('username');
     password = document.getElementById('userpassword');
     let newGuest = new Guest();
     newGuest['name'] = username.value;
     newGuest['password'] = password.value;
-    newGuest['bild'] = './img/Icons/guest-user.jpg'
+    newGuest['bild'] = './assets/images/guest-user.jpg'
     account.push(newGuest);
     refreshForm(username, password);
 }
-
 
 function refreshForm(username, password) {
     event.preventDefault();
     checkbox.checked = false;
     document.getElementById('button').innerHTML = "Log In";
-    document.getElementById('button').removeEventListener("click", addAccount);
+    document.getElementById('button').removeEventListener("click", AddAccount);
     document.getElementById('button').type = 'submit';
     if (username.value && password.value) {
         alert('Your Username and Password is saved and you can log in');
