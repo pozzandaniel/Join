@@ -4,11 +4,13 @@ async function renderBacklog() {
     let workspace = document.getElementById('workspace');
     workspace.innerHTML = backlogTemplate();
 
+  
     await renderBacklogTasks();
 }
 
 
-function renderBacklogTasks() {
+async function renderBacklogTasks() {
+    await loadAllTasks();
     let workspace = document.getElementById('workspace');
 
     for (let i = 0; i < allTasks.length; i++) {
@@ -81,3 +83,5 @@ function callDialog(){
         dialog.classList.add('d-none');
     }, 2000);
 }
+
+setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
