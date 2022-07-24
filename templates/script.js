@@ -1,14 +1,20 @@
 let imgUser;
 
 /**
- * The function "start" is always called by onload of the relative sections
+ * The function "start" is always called by loading of all sections
  */
 async function start() {
     await includeHTML();
     await loadAllTasks();
-    await loadUserStory();
     await getUserImage();
-    renderHTML();
+    console.log('url is: ',window.location.href.split("/").pop()); 
+    if(window.location.href.split("/").pop() == 'board.html'){
+        alert('you are on board.html')
+        renderHTML();
+    }   
+    
+
+    
 }
 
 /**
@@ -31,7 +37,6 @@ async function includeHTML() {
 
 /**
  * After the login the function get the image path saved in the local storage and applies it to the account avatar
- * @param {imgUser} 
  */
 async function getUserImage() {
     imgUser = localStorage.getItem('userPath');
@@ -46,6 +51,9 @@ function closeMenuu() {
     document.getElementById('overmenu').classList.remove('showoverlay');	
 } 
 
+/**
+ * By clicking the icon the homepage is called.
+ */
 function getHome() {
     window.location = './board.html';
 }
