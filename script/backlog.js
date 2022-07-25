@@ -2,6 +2,7 @@ let backlogArray;
 let backlogStories;
 let task;
 
+
 /**
  * The backlog tasks are rendered according to their belong to "backlog" category. 
  * In other words when the attribute "position" inside the main array "allTasks" is set to "backlog".
@@ -18,6 +19,7 @@ async function renderBacklogTasks() {
     }
 }
 
+
 function templateBacklogTasks() {
     return /*html*/`
     <div onclick = "addBoard()" class = "backlog-table-tasks">
@@ -33,6 +35,7 @@ function templateBacklogTasks() {
     </div>
 `;
 }
+
 
 /**
  * On click the related element inside the main array "allTasks", changes the attribute "position" to "board".
@@ -51,6 +54,7 @@ function addBoard() {
     }, 2000);
 }
 
+
 /**
  * A dialog window is open, when a task in backlog is clicked. After 2 seconds the window is automatically close.
  */
@@ -62,7 +66,3 @@ function callDialog() {
         dialog.classList.add('d-none');
     }, 2000);
 }
-
-
-
-
