@@ -1,10 +1,7 @@
 let generateId = 0;
 let dropdown = false;
-
 let allTasks = [];
-
 let selectedUsers = [];
-
 let selected = {
     'kevin': false,
     'feros': false,
@@ -12,8 +9,8 @@ let selected = {
     'daniel': false
 }
 
-class CompleteTask {
 
+class CompleteTask {
     constructor(id, title, dueDate, category, urgency, description, assignedTo, createdAt, position, state){
         this.id = id;
         this.title = title;
@@ -46,6 +43,7 @@ function openDropdown() {
     
 }
 
+
 /**
  * Check of at least one collaborator's been selected. When not, a dialog window with id "dialogAdTask" is open and
  * a warn message is shown. That invites you to add at least one collaborator to the task otherwise is not possible
@@ -61,9 +59,9 @@ function requestForm() {
         document.getElementById('avatarPicker').classList.remove('d-none');
         document.getElementById('dialogAdTask').classList.remove('d-none');
         dropdown = true;
-
     }
 }
+
 
 /**
  * A new task is generated with the values of the form inputs, using the model of the class
@@ -85,6 +83,7 @@ function createTask() {
     updateAllTasks(completeTask); 
 }
 
+
 /**
  * The values of the inputs are reset.
  * @param {string} title - The value from the input with id "title-input"
@@ -101,6 +100,7 @@ function refreshCreateTaskInputs(title, dueDate, category, urgency, description)
     description = '';
 }
 
+
 /**
  * The new task created by the function "createTask" is pushed into the array "allTasks"
  * @param {JSON} completeTask - object created with data source from the input fields. The model of this 
@@ -116,20 +116,25 @@ function updateAllTasks(completeTask){
     }, 2000)
 }
 
-// ##### SPEICHERN IM BACKEND: #####
 
+/**
+ * With this function we can save the tasks in the backend.
+ */
 setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
 
 function saveAllTasks() {
     backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
-// ##### LADEN AUS DEM BACKEND: #####
 
+/**
+ * With this function we can reload the saved tasks from the backend.
+ */
 async function loadAllTasks() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }
+
 
 /**
  * It allows the toggle of the collaborators.
@@ -149,5 +154,3 @@ function selectAvatar(id) {
         selectedUsers.splice(indexAvatar, 1);
     }
 }
-
-
