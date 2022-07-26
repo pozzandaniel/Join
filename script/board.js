@@ -19,6 +19,7 @@ function renderHTML() {
     filterDoneTask(boardArray);
 }
 
+
 /**
  * Cards are generated in the column "to Do". A new array is generated when the state is set to "toDoTask".
  * @param {array} boardArray - it is the sub-array generated from the main array "allTasks", when the attribute state is set to "board". 
@@ -32,6 +33,7 @@ function filterToDoTask(boardArray) {
         colorUserStory(i, array);          
     }
 }
+
 
 /**
  * Cards are generated in the column "In progress". A new array is generated when the state is set to "progressTask".
@@ -47,6 +49,7 @@ function filterProgressTask(boardArray) {
     }
 }
 
+
 /**
  * Cards are generated in the column "testing". A new array is generated when the state is set to "testingtask".
  * @param {array} boardArray - it is the sub-array generated from the main array "allTasks", when the attribute state is set to "board". 
@@ -61,6 +64,7 @@ function filterTestingTask(boardArray) {
     }
 }
 
+
 /**
  * Cards are generated in the column "done". A new array is generated when the state is set to "doneTask".
  * @param {array} boardArray - it is the sub-array generated from the main array "allTasks", when the attribute state is set to "board". 
@@ -74,6 +78,7 @@ function filterDoneTask(boardArray) {
         colorUserStory(i, array);          
     }
 }
+
 
 /**
  * For each of the four generated array: toDo column, inProgress column, testing column and done column. A card is compiled with the informations
@@ -90,8 +95,8 @@ function renderTaskTypology(taskTypology, i, array) {
     category = array[i]['category'];
     collaborators = array[i]['assignedTo'];
     taskTypology.innerHTML += templateTaskTypology();
-    
 }
+
 
 function templateTaskTypology() {
     return `<div draggable="true" ondragstart="startDragging(${id})" class = "user-story" id="userStory${id}">
@@ -102,6 +107,7 @@ function templateTaskTypology() {
     </div>
     `;
 }
+
 
 /**
  * After that the cards are compiled. They are coloured corresponding whether the urgency is regulated to "high", "intermediate" or "low".
@@ -121,6 +127,7 @@ function colorUserStory(i, array) {
     }
 }
 
+
 /**
  * When a card is dragged, its id is saved in a global variable named "currentDraggedElement".
  * @param {number} id - Number generated with the function (Math.random * 1000). When a new task is constitute.
@@ -129,9 +136,11 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
 
 /**
  * When a card is dragged over a column and dropped into it. This column call a function that fabricate a fictitious array with 
@@ -149,6 +158,7 @@ function moveTo(taskTypology) {
     renderHTML();
 }
 
+
 /**
  * By clicking the button delete on the card. This card is deleted from the main-array "allTask" according to its unique id.
  * After that the changes are saved in the backend and all the cards are newly rendered, to show the modifications
@@ -161,5 +171,3 @@ function deleteTask(id) {
     saveAllTasks();
     renderHTML();
 } 
-
-

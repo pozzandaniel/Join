@@ -9,6 +9,7 @@ let currentuser;
 let checkbox;
 let textButton;
 
+
 /**
  * This function load the username and the password from the file json and save the data in the variable "account".
  */
@@ -17,6 +18,7 @@ async function renderAccount() {
     let response = await fetch(url);
     account = await response.json();
 }
+
 
 /**
  * Through the login function is checked, whether the given username and password match the data saved in the variable account.
@@ -34,6 +36,7 @@ function login() {
     } 
 }
 
+
 /**
  * The image of the avatar is chosen according to the transmitted username data.
  * @param {string} username - The value of username given during the submission of the form.
@@ -49,9 +52,11 @@ function checkMatchPhoto(username, element) {
     }
 }
 
+
 function saveImagePath(imagePath) {
     localStorage.setItem('userPath', imagePath);
 }
+
 
 /**
  * When the checkbox in the form of the login is ticked, the form structure is changed in order to be able to 
@@ -71,6 +76,7 @@ function switchToSignUp() {
     }
 }
 
+
 /**
  * A new object with class Guest is pushed in the array "account" with the scope of generate a new username and password
  * @param {string} username 
@@ -86,6 +92,7 @@ function AddAccount(username, password) {
     account.push(newGuest);
     refreshForm(username, password);
 }
+
 
 /**
  * At the end of the creation of a new account, the structure of the login form is newly set for checking 

@@ -3,6 +3,7 @@ let backlogStories;
 let task;
 let categorycolor;
 
+
 /**
  * The backlog tasks are rendered according to their belong to "backlog" category. 
  * In other words when the attribute "position" inside the main array "allTasks" is set to "backlog".
@@ -62,6 +63,7 @@ function templateBacklogTasks(categorycolor) {
 `;
 }
 
+
 /**
  * On click the related element inside the main array "allTasks", changes the attribute "position" to "board".
  * Then after 2 seconds the BacklogTasks are newly rendered. That causes the disappearing of the element, because
@@ -79,6 +81,7 @@ function addBoard() {
     }, 2000);
 }
 
+
 /**
  * A dialog window is open, when a task in backlog is clicked. After 2 seconds the window is automatically close.
  */
@@ -90,7 +93,3 @@ function callDialog() {
         dialog.classList.add('d-none');
     }, 2000);
 }
-
-
-
-
