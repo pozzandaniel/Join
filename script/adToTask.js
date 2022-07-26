@@ -6,10 +6,10 @@ let allTasks = [];
 let selectedUsers = [];
 
 let selected = {
-    'kevin': false,
-    'feros': false,
-    'norbert': false,
-    'daniel': false
+    'Kevin': false,
+    'Feros': false,
+    'Norbert': false,
+    'Daniel': false
 }
 
 class CompleteTask {

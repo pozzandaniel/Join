@@ -1,6 +1,7 @@
 let backlogArray;
 let backlogStories;
 let task;
+let categorycolor;
 
 /**
  * The backlog tasks are rendered according to their belong to "backlog" category. 
@@ -12,16 +13,43 @@ async function renderBacklogTasks() {
     backlogArray = allTasks.filter(t => t['position'] == 'backlog');
     backlogStories.innerHTML = '';
 
+
+
+
     for (let i = 0; i < backlogArray.length; i++) {
         task = backlogArray[i];
-        backlogStories.innerHTML += templateBacklogTasks();
+    
+        if (task['category'] == "Management" ) {
+            categorycolor = '#E26EFF';
     }
+    if (task['category'] == "Software Development" ) {
+        categorycolor = '#FFAF6E';
+    }
+    if (task['category'] == "UX/UI Design" ) {
+        categorycolor = '#55AE66';
+    }
+    if (task['category'] == "Human Ressources" ) {
+        categorycolor = '#66A2DB';
+    }
+
+        backlogStories.innerHTML += templateBacklogTasks(categorycolor);
+
+
+    }
+
+
 }
 
-function templateBacklogTasks() {
+function templateBacklogTasks(categorycolor) {
+
     return /*html*/`
     <div onclick = "addBoard()" class = "backlog-table-tasks">
-        <div>
+    
+    <div style = "background-color:${categorycolor}" id = "priority_color">
+        
+    </div>
+    
+    <div>
             <p>${task['assignedTo']}</p>
         </div>
         <div>
@@ -41,12 +69,12 @@ function templateBacklogTasks() {
  */
 function addBoard() {
     let idTask = task['id'];
-    let array =  allTasks.filter(t => t['id'] == idTask);
-    array[0].position= 'board';
+    let array = allTasks.filter(t => t['id'] == idTask);
+    array[0].position = 'board';
     saveAllTasks();
     callDialog();
 
-    setTimeout( () => {
+    setTimeout(() => {
         renderBacklogTasks();
     }, 2000);
 }
@@ -57,8 +85,8 @@ function addBoard() {
 function callDialog() {
     let dialog = document.getElementById('dialogBacklog');
     dialog.classList.remove('d-none');
-    
-    setTimeout( () => {
+
+    setTimeout(() => {
         dialog.classList.add('d-none');
     }, 2000);
 }
