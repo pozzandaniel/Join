@@ -2,6 +2,7 @@ let backlogArray;
 let backlogStories;
 let task;
 let categorycolor;
+let profileImg;
 
 
 /**
@@ -19,40 +20,46 @@ async function renderBacklogTasks() {
 
     for (let i = 0; i < backlogArray.length; i++) {
         task = backlogArray[i];
-    
-        if (task['category'] == "Management" ) {
-            categorycolor = '#E26EFF';
-    }
-    if (task['category'] == "Software Development" ) {
-        categorycolor = '#FFAF6E';
-    }
-    if (task['category'] == "UX/UI Design" ) {
-        categorycolor = '#55AE66';
-    }
-    if (task['category'] == "Human Ressources" ) {
-        categorycolor = '#66A2DB';
-    }
 
-        backlogStories.innerHTML += templateBacklogTasks(categorycolor);
+        categoryColor();
 
 
-    }
+
+        backlogStories.innerHTML += templateBacklogTasks(categorycolor , profileImg);
 
 
+    }   
 }
 
-function templateBacklogTasks(categorycolor) {
+function categoryColor() {
+
+    if (task['category'] == "Management") {
+        categorycolor = '#E26EFF';
+    }
+    if (task['category'] == "Software Development") {
+        categorycolor = '#FFAF6E';
+    }
+    if (task['category'] == "UX/UI Design") {
+        categorycolor = '#55AE66';
+    }
+    if (task['category'] == "Human Ressources") {
+        categorycolor = '#66A2DB';
+    }
+}
+
+
+function templateBacklogTasks(categorycolor , profileImg) {
 
     return /*html*/`
     <div onclick = "addBoard()" class = "backlog-table-tasks">
     
     <div style = "background-color:${categorycolor}" id = "priority_color">
-        
     </div>
     
-    <div>
-            <p>${task['assignedTo']}</p>
-        </div>
+    <div class = "assigned_to">
+            <img src="${profileImg}" id="user_img" class="backlog_profil_img">
+            <p>${task['assignedTo']}</p>            
+    </div>
         <div>
             <p>${task['category']}</p>
         </div>
