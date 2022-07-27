@@ -1,6 +1,8 @@
 let backlogArray;
 let backlogStories;
 let task;
+let categorycolor;
+let profileImg;
 
 
 /**
@@ -13,19 +15,51 @@ async function renderBacklogTasks() {
     backlogArray = allTasks.filter(t => t['position'] == 'backlog');
     backlogStories.innerHTML = '';
 
+
+
+
     for (let i = 0; i < backlogArray.length; i++) {
         task = backlogArray[i];
-        backlogStories.innerHTML += templateBacklogTasks();
+
+        categoryColor();
+
+
+
+        backlogStories.innerHTML += templateBacklogTasks(categorycolor , profileImg);
+
+
+    }   
+}
+
+function categoryColor() {
+
+    if (task['category'] == "Management") {
+        categorycolor = '#E26EFF';
+    }
+    if (task['category'] == "Software Development") {
+        categorycolor = '#FFAF6E';
+    }
+    if (task['category'] == "UX/UI Design") {
+        categorycolor = '#55AE66';
+    }
+    if (task['category'] == "Human Ressources") {
+        categorycolor = '#66A2DB';
     }
 }
 
 
-function templateBacklogTasks() {
+function templateBacklogTasks(categorycolor , profileImg) {
+
     return /*html*/`
     <div onclick = "addBoard()" class = "backlog-table-tasks">
-        <div>
-            <p>${task['assignedTo']}</p>
-        </div>
+    
+    <div style = "background-color:${categorycolor}" id = "priority_color">
+    </div>
+    
+    <div class = "assigned_to">
+            <img src="${profileImg}" id="user_img" class="backlog_profil_img">
+            <p>${task['assignedTo']}</p>            
+    </div>
         <div>
             <p>${task['category']}</p>
         </div>
@@ -44,12 +78,12 @@ function templateBacklogTasks() {
  */
 function addBoard() {
     let idTask = task['id'];
-    let array =  allTasks.filter(t => t['id'] == idTask);
-    array[0].position= 'board';
+    let array = allTasks.filter(t => t['id'] == idTask);
+    array[0].position = 'board';
     saveAllTasks();
     callDialog();
 
-    setTimeout( () => {
+    setTimeout(() => {
         renderBacklogTasks();
     }, 2000);
 }
@@ -61,8 +95,8 @@ function addBoard() {
 function callDialog() {
     let dialog = document.getElementById('dialogBacklog');
     dialog.classList.remove('d-none');
-    
-    setTimeout( () => {
+
+    setTimeout(() => {
         dialog.classList.add('d-none');
     }, 2000);
 }
