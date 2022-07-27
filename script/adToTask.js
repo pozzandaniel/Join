@@ -2,11 +2,12 @@ let generateId = 0;
 let dropdown = false;
 let allTasks = [];
 let selectedUsers = [];
+let selectImages = [];
 let selected = {
-    'kevin': false,
-    'feros': false,
-    'norbert': false,
-    'daniel': false
+    'Kevin': false,
+    'Feros': false,
+    'Norbert': false,
+    'Daniel': false
 }
 
 
@@ -143,6 +144,8 @@ async function loadAllTasks() {
 function selectAvatar(id) {
     if (selected[id] == false) {
         selected[id] = true;
+        let path = document.getElementById(id).src;
+        console.log(path);
         document.getElementById(id).classList.add('selected-picture');
         document.getElementById('dialogAdTask').classList.add('d-none')
         selectedUsers.push(id);
