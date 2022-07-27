@@ -12,7 +12,7 @@ let selected = {
 
 
 class CompleteTask {
-    constructor(id, title, dueDate, category, urgency, description, assignedTo, createdAt, position, state){
+    constructor(id, title, dueDate, category, urgency, description, assignedTo, assignedImg, createdAt, position, state){
         this.id = id;
         this.title = title;
         this.dueDate = dueDate;
@@ -20,6 +20,7 @@ class CompleteTask {
         this.urgency = urgency;
         this.description = description;
         this.assignedTo = assignedTo;
+        this.assignedImg = assignedImg;
         this.createdAt = createdAt;
         this.position = position;
         this.state = state;
@@ -76,7 +77,7 @@ function createTask() {
     let task_urgency = document.getElementById('urgency-input');
     let task_description = document.getElementById('description-input');
     let completeTask = new CompleteTask( generateId, task_title.value, task_due_date.value, task_category.value, 
-    task_urgency.value, task_description.value, selectedUsers, new Date().getTime(), 'backlog', 'toDoTask');   
+    task_urgency.value, task_description.value, selectedUsers, selectImages, new Date().getTime(), 'backlog', 'toDoTask');   
 
     refreshCreateTaskInputs(task_title.value, task_due_date.value, task_category.value,
     task_urgency.value, task_description.value);
@@ -144,12 +145,12 @@ async function loadAllTasks() {
 function selectAvatar(id) {
     if (selected[id] == false) {
         selected[id] = true;
-        let path = document.getElementById(id).src;
-        console.log(path);
         document.getElementById(id).classList.add('selected-picture');
         document.getElementById('dialogAdTask').classList.add('d-none')
+        let path = document.getElementById(id).src;
+        selectImages.push(path);
         selectedUsers.push(id);
-
+        
     } else if (selected[id] == true) {
         selected[id] = false;
         document.getElementById(id).classList.remove('selected-picture');

@@ -14,21 +14,23 @@ async function renderBacklogTasks() {
     backlogStories = document.getElementById('backlogStories-container');
     backlogArray = allTasks.filter(t => t['position'] == 'backlog');
     backlogStories.innerHTML = '';
-
-
-
-
+    
+    
+    
+    
     for (let i = 0; i < backlogArray.length; i++) {
         task = backlogArray[i];
-
+        
         categoryColor();
-
-
-
+        
+        
+        
         backlogStories.innerHTML += templateBacklogTasks(categorycolor , profileImg);
-
-
-    }   
+        
+        
+    } 
+    
+    displayCollaborators();
 }
 
 function categoryColor() {
@@ -47,6 +49,23 @@ function categoryColor() {
     }
 }
 
+function displayCollaborators(){
+
+   
+    if(task['assignedImg'][0] === undefined ){
+        let firstColl = document.getElementById(`user_img_1_${task['id']}`).classList.add('d-none');
+    }
+    if(task['assignedImg'][1] === undefined ){
+        let secondColl = document.getElementById(`user_img_2_${task['id']}`).classList.add('d-none');
+    }
+    if(task['assignedImg'][2] === undefined ){
+        let thirdColl = document.getElementById(`user_img_3_${task['id']}`).classList.add('d-none');
+    }
+    if(task['assignedImg'][3] === undefined ){
+        let fourthColl = document.getElementById(`user_img_4_${task['id']}`).classList.add('d-none');
+    }
+}
+
 
 function templateBacklogTasks(categorycolor , profileImg) {
 
@@ -56,8 +75,14 @@ function templateBacklogTasks(categorycolor , profileImg) {
     <div style = "background-color:${categorycolor}" id = "priority_color">
     </div>
     
-    <div class = "assigned_to">
-            <img src="${profileImg}" id="user_img" class="backlog_profil_img">
+    <div class = "assigned_to" id="${task['id']}">
+        <div >
+            <img src="${task['assignedImg'][0]}" id="user_img_1_${task['id']}" class="backlog_profil_img, backlog_profil_img">
+            <img src="${task['assignedImg'][1]}" id="user_img_2_${task['id']}" class="backlog_profil_img, backlog_profil_img">
+            <img src="${task['assignedImg'][2]}" id="user_img_3_${task['id']}" class="backlog_profil_img, backlog_profil_img">
+            <img src="${task['assignedImg'][3]}" id="user_img_4_${task['id']}" class="backlog_profil_img, backlog_profil_img">
+
+        </div>
             <p>${task['assignedTo']}</p>            
     </div>
         <div>
