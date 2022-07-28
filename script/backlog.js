@@ -1,6 +1,7 @@
 let backlogArray;
 let backlogStories;
 let task;
+let id_task;
 let categorycolor;
 let profileImg;
 
@@ -20,20 +21,20 @@ async function renderBacklogTasks() {
     
     for (let i = 0; i < backlogArray.length; i++) {
         task = backlogArray[i];
+        id_task = task['id'];
         
-        categoryColor();
-        
-        
-        
-        backlogStories.innerHTML += templateBacklogTasks(categorycolor , profileImg);
+        categoryColor(task);
+        backlogStories.innerHTML += templateBacklogTasks(categorycolor , id_task, task);
+        displayCollaborators(id_task, task);
         
         
     } 
     
-    displayCollaborators();
+
+    
 }
 
-function categoryColor() {
+function categoryColor(task) {
 
     if (task['category'] == "Management") {
         categorycolor = '#E26EFF';
@@ -49,41 +50,45 @@ function categoryColor() {
     }
 }
 
-function displayCollaborators(){
+function displayCollaborators(id_task, task){
 
-   
-    if(task['assignedImg'][0] === undefined ){
-        let firstColl = document.getElementById(`user_img_1_${task['id']}`).classList.add('d-none');
+
+
+    if(task['assignedImg'][0] === undefined){
+        document.getElementById(`collaborator1-${id_task}`).classList.add('d-none');
     }
-    if(task['assignedImg'][1] === undefined ){
-        let secondColl = document.getElementById(`user_img_2_${task['id']}`).classList.add('d-none');
+    if(task['assignedImg'][1] === undefined){
+        document.getElementById(`collaborator2-${id_task}`).classList.add('d-none');
     }
-    if(task['assignedImg'][2] === undefined ){
-        let thirdColl = document.getElementById(`user_img_3_${task['id']}`).classList.add('d-none');
+    if(task['assignedImg'][2] === undefined){
+        document.getElementById(`collaborator3-${id_task}`).classList.add('d-none');
     }
-    if(task['assignedImg'][3] === undefined ){
-        let fourthColl = document.getElementById(`user_img_4_${task['id']}`).classList.add('d-none');
+    if(task['assignedImg'][3] === undefined){
+        document.getElementById(`collaborator4-${id_task}`).classList.add('d-none');
     }
+
 }
 
 
-function templateBacklogTasks(categorycolor , profileImg) {
+
+
+function templateBacklogTasks(categorycolor, id_task, task) {
 
     return /*html*/`
-    <div onclick = "addBoard()" class = "backlog-table-tasks">
+    <div onclick = "addBoard(${id_task})" class = "backlog-table-tasks">
     
-    <div style = "background-color:${categorycolor}" id = "priority_color">
+    <div style = "background-color:${categorycolor}" class = "priority_color">
     </div>
     
-    <div class = "assigned_to" id="${task['id']}">
-        <div >
-            <img src="${task['assignedImg'][0]}" id="user_img_1_${task['id']}" class="backlog_profil_img, backlog_profil_img">
-            <img src="${task['assignedImg'][1]}" id="user_img_2_${task['id']}" class="backlog_profil_img, backlog_profil_img">
-            <img src="${task['assignedImg'][2]}" id="user_img_3_${task['id']}" class="backlog_profil_img, backlog_profil_img">
-            <img src="${task['assignedImg'][3]}" id="user_img_4_${task['id']}" class="backlog_profil_img, backlog_profil_img">
-
+    <div class = "assigned_to" >
+        <div>
+            <img id="collaborator1-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][0]}" alt="">
+            <img id="collaborator2-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][1]}" alt="">
+            <img id="collaborator3-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][2]}" alt="">
+            <img id="collaborator4-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][3]}" alt="">
+            
         </div>
-            <p>${task['assignedTo']}</p>            
+        <p>${task['assignedTo']}</p>            
     </div>
         <div>
             <p>${task['category']}</p>
@@ -101,9 +106,9 @@ function templateBacklogTasks(categorycolor , profileImg) {
  * Then after 2 seconds the BacklogTasks are newly rendered. That causes the disappearing of the element, because
  * the attribute "position" is no more set on "backlog".
  */
-function addBoard() {
-    let idTask = task['id'];
-    let array = allTasks.filter(t => t['id'] == idTask);
+function addBoard(id_task) {
+    
+    let array = allTasks.filter(t => t['id'] == id_task);
     array[0].position = 'board';
     saveAllTasks();
     callDialog();

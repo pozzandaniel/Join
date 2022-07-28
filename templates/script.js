@@ -9,7 +9,6 @@ async function start() {
     await getUserImage();
     console.log('url is: ',window.location.href.split("/").pop()); 
     if(window.location.href.split("/").pop() == 'board.html'){
-        alert('you are on board.html')
         renderHTML();
     }   
     

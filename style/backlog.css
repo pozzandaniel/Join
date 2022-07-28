@@ -76,7 +76,7 @@
     border-radius: 12px;
 }
 
-#priority_color {
+.priority_color {
     width: 8px;
     height: 100%;
     border-top-left-radius: 12px;
