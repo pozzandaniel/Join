@@ -99,7 +99,7 @@ function renderTaskTypology(taskTypology, i, array) {
 
 
 function templateTaskTypology() {
-    return `<div draggable="true" ondragstart="startDragging(${id})" class = "user-story" id="userStory${id}">
+    return `<div onclick="showTicket(${id})" draggable="true" ondragstart="startDragging(${id})" class = "user-story" id="userStory${id}">
     <strong>${title}</strong> <span>${dueDate}</span>
     <p>${category}</p>
     <p>${collaborators}</p>
@@ -171,3 +171,8 @@ function deleteTask(id) {
     saveAllTasks();
     renderHTML();
 } 
+
+function showTicket(id) {
+
+
+}

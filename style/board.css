@@ -30,13 +30,11 @@
     background-color: #F4F3FB;
     min-height: 650px;
     width: 250px;
-}
-
-#toDoTask{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 .user-story{
     width: 170px;
@@ -45,4 +43,16 @@
     margin-bottom: 12px;
     border-radius: 12px;
     padding: 12px;
+}
+
+.ticket_popup {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 40%;
+    left: 40%;
+    z-index: 1;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    display: none;
+
 }
