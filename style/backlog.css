@@ -36,10 +36,11 @@
     margin: 0rem 2rem 1rem 2rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     background-color: #F4F3FB;
     height: 70px;
-    border-radius: 12px;
+    border-radius: 0.4rem;
 }
 
 .backlog-table-tasks:hover {
@@ -73,14 +74,14 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-radius: 12px;
+    border-radius: 0.4rem;
 }
 
 .category_color {
     width: 10px !important;
     height: 100%;
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
     
 }
 
@@ -105,7 +106,7 @@
 .backlog_description {
     display: flex;
     align-items: center;  
-    width: 50em !important;
+    width: 15em !important;
     height: 100%;
     padding-right: 45px;
     margin-right: 40px;
