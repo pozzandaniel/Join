@@ -95,19 +95,41 @@ function renderTaskTypology(taskTypology, i, array) {
     category = array[i]['category'];
     collaborators = array[i]['assignedTo'];
     taskTypology.innerHTML += templateTaskTypology();
+    colorBoardCategory(category);
 }
 
 
 function templateTaskTypology() {
-    return `<div onclick="showTicket(${id})" draggable="true" ondragstart="startDragging(${id})" class = "user-story" id="userStory${id}">
-    <strong>${title}</strong> <span>${dueDate}</span>
+    return `<div onclick="showTicket(${id})" draggable="true" ondragstart="startDragging(${id})" class = "user-story" >
+    <div id = "board_category_color${id}" class = "board_category_color"></div>
+    <div>
+    <div id="userStory${id}" class = "board_urgency"></div>
+    <span>${dueDate}</span> <br> <strong>${title}</strong>
     <p>${category}</p>
-    <p>${collaborators}</p>
     <p style:"cursor:pointer" onclick="deleteTask(${id})">DELETE</p>
     </div>
-    `;
+    </div>`;
 }
 
+function colorBoardCategory(category) {
+
+    let categorycolor;
+    
+    if (category == "Management") {
+        categorycolor = '#E26EFF';
+    }
+    if (category == "Software Development") {
+        categorycolor = '#FFAF6E';
+    }
+    if (category == "UX/UI Design") {
+        categorycolor = '#55AE66';
+    }
+    if (category == "Human Ressources") {
+        categorycolor = '#66A2DB';
+    }
+
+    document.getElementById(`board_category_color${id}`).style.backgroundColor = categorycolor;
+}
 
 /**
  * After that the cards are compiled. They are coloured corresponding whether the urgency is regulated to "high", "intermediate" or "low".

@@ -37,12 +37,14 @@
 
 
 .user-story{
+    display:flex;
     width: 170px;
-    border: 5px solid rgba(0, 0, 0, 0.1);
+    border: unset;
     margin-top: 12px;
     margin-bottom: 12px;
-    border-radius: 12px;
-    padding: 12px;
+    border-radius: 6px;
+    position: relative;
+    background-color: white;
 }
 
 .ticket_popup {
@@ -55,4 +57,25 @@
     border: 5px solid rgba(0, 0, 0, 0.1);
     display: none;
 
+}
+
+.board_urgency {
+    width: 0px;
+    height: 0px;
+    border-top: 30px solid transparent;
+    border-left: 30px solid white;
+    position:absolute;
+    right: 0;
+    top: 0;
+    border-top-right-radius: 6px;    
+}
+
+.board_category_color {
+    width: 8px;
+    height:auto;
+    background-color: rgb(18, 88, 88);
+    
+    margin-right: 12px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
