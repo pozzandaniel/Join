@@ -29,23 +29,39 @@
 .task {
     background-color: #F4F3FB;
     min-height: 650px;
-    width: 250px;
+    width: 16rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;   
 }
+
 
 
 .user-story{
     display:flex;
-    width: 170px;
+    width: 90%;
     border: unset;
     margin-top: 12px;
     margin-bottom: 12px;
     border-radius: 6px;
     position: relative;
     background-color: white;
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
 }
+
+.user-story:active {
+    cursor: grabbing;
+    cursor: move;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+
+
+
 
 .ticket_popup {
     position: absolute;
@@ -78,4 +94,43 @@
     margin-right: 12px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
+}
+
+.ticket_container {
+    padding-top: 8px;
+}
+
+.ticket_container button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #6F96FF;
+    color: white;
+    border: 1px solid rgb(253, 252, 252);
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+
+.ticket_container strong{
+    margin: 0px;
+}
+
+.ticket_category {
+    margin: 0;
+    
+}
+
+.ticket_date {
+    font-size: 0.8rem;
+    
+}
+
+.ticket_title {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    font-weight: bold;
+    font-size: larger;
+    text-transform: capitalize;
 }

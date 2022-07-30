@@ -27,10 +27,10 @@ function renderHTML() {
 function filterToDoTask(boardArray) {
     let array = boardArray.filter(t => t['state'] == 'toDoTask');
     let toDoTask = document.getElementById('toDoTask');
-    toDoTask.innerHTML = ''; 
+    toDoTask.innerHTML = '';
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(toDoTask, i, array);
-        colorUserStory(i, array);          
+        colorUserStory(i, array);
     }
 }
 
@@ -42,10 +42,10 @@ function filterToDoTask(boardArray) {
 function filterProgressTask(boardArray) {
     let array = boardArray.filter(t => t['state'] == 'progressTask');
     let progressTask = document.getElementById('progressTask');
-    progressTask.innerHTML = ''; 
+    progressTask.innerHTML = '';
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(progressTask, i, array);
-        colorUserStory(i, array);          
+        colorUserStory(i, array);
     }
 }
 
@@ -57,10 +57,10 @@ function filterProgressTask(boardArray) {
 function filterTestingTask(boardArray) {
     let array = boardArray.filter(t => t['state'] == 'testingTask');
     let testingTask = document.getElementById('testingTask');
-    testingTask.innerHTML = ''; 
+    testingTask.innerHTML = '';
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(testingTask, i, array);
-        colorUserStory(i, array);          
+        colorUserStory(i, array);
     }
 }
 
@@ -72,10 +72,10 @@ function filterTestingTask(boardArray) {
 function filterDoneTask(boardArray) {
     let array = boardArray.filter(t => t['state'] == 'doneTask');
     let doneTask = document.getElementById('doneTask');
-    doneTask.innerHTML = ''; 
+    doneTask.innerHTML = '';
     for (let i = 0; i < array.length; i++) {
         renderTaskTypology(doneTask, i, array);
-        colorUserStory(i, array);          
+        colorUserStory(i, array);
     }
 }
 
@@ -102,19 +102,27 @@ function renderTaskTypology(taskTypology, i, array) {
 function templateTaskTypology() {
     return `<div onclick="showTicket(${id})" draggable="true" ondragstart="startDragging(${id})" class = "user-story" >
     <div id = "board_category_color${id}" class = "board_category_color"></div>
-    <div>
-    <div id="userStory${id}" class = "board_urgency"></div>
-    <span>${dueDate}</span> <br> <strong>${title}</strong>
-    <p>${category}</p>
-    <p style:"cursor:pointer" onclick="deleteTask(${id})">DELETE</p>
+    <div class = "ticket_container">
+        <div id="userStory${id}" class = "board_urgency"></div>
+        <span class = "ticket_date">${dueDate}</span> <br> 
+        <p class = "ticket_title">${title}</p>
+        <p class = "ticket_category">${category}</p>
+        <button>Show Ticket</button>
+        
     </div>
     </div>`;
+}
+
+function showTicketBoard () {
+    document.getElementById("ticket_popup").innerHTML += 
+    '<p style:"cursor:pointer" onclick="deleteTask(${id})">DELETE</p>' ;
+    
 }
 
 function colorBoardCategory(category) {
 
     let categorycolor;
-    
+
     if (category == "Management") {
         categorycolor = '#E26EFF';
     }
@@ -140,9 +148,9 @@ function colorUserStory(i, array) {
     let id = array[i]['id'];
     let urgency = array[i]['urgency'];
     let card = document.getElementById(`userStory${id}`);
-    if(urgency == 'High'){
+    if (urgency == 'High') {
         card.style = 'background-color: rgba(200, 23, 23, 1);'
-    } else if(urgency == 'Intermediate'){
+    } else if (urgency == 'Intermediate') {
         card.style = 'background-color: yellow;'
     } else {
         card.style = 'background-color: rgba(23, 200, 23, 1);'
@@ -192,7 +200,7 @@ function deleteTask(id) {
     allTasks.splice(index, 1);
     saveAllTasks();
     renderHTML();
-} 
+}
 
 function showTicket(id) {
 
