@@ -35,24 +35,28 @@
             </div>
             <div id="workspace" class="workspace">
                 <div class="add-task-main-container">
-        
+                    <div class="headline-container">
+                        <h1>Add Task</h1>
+                        <p>Learning Management System Project</p>
+
+                    </div>
                     <form onsubmit="requestForm()" class="add-task-container">
         
                         <div class="top-row">
-                            <div class="title-input-container">
-                                <h2>Title</h2>
-                                <input required id="title-input" type="text">
+                            <div class="title-input-container field-container">
+                                <h2>TITLE</h2>
+                                <input placeholder="Title" required id="title-input" type="text">
                             </div>
-                            <div class="date-container">
-                                <h2>Due Date</h2>
+                            <div class="date-container field-container">
+                                <h2>DUE DATE</h2>
                                 <input required id="date-input" type="date">
                             </div>
                         </div>
         
         
                         <div class="mid-row">
-                            <div class="category-container">
-                                <h2>Category</h2>
+                            <div class="category-container field-container">
+                                <h2>CATEGORY</h2>
                                 <select name="" id="category-input">
                                     <option value="Management">Management</option>
                                     <option value="Software Development">Software Development</option>
@@ -60,8 +64,8 @@
                                     <option value="Human Ressources">Human Ressources</option>
                                 </select>
                             </div>
-                            <div class="urgency-container">
-                                <h2>Urgency</h2>
+                            <div class="urgency-container field-container">
+                                <h2>URGENCY</h2>
                                 <select name="" id="urgency-input">
                                     <option value="High">High</option>
                                     <option value="Intermediate">Intermediate</option>
@@ -72,13 +76,13 @@
         
         
                         <div class ="bottom-row">
-                            <div class="description-container">
-                                <h2>Description</h2>
+                            <div class="description-container field-container">
+                                <h2>DESCRIPTION</h2>
                                 <textarea required name="" id="description-input" cols="30" rows="10"></textarea>
                             </div>
     
-                            <div class="assigned-to-container">
-                                <h2>Assigned to</h2>
+                            <div class="assigned-to-container field-container ">
+                                <h2>ASSIGNED TO</h2>
                                 <div class="placeholder-container">
     
                                     <div class="icon-container">
