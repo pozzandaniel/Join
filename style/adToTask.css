@@ -17,7 +17,7 @@ h2{
 
 .headline-container{
     width: 95%;
-    height: 20%;
+    height: 10vh;
 }
 
 .headline-container h1{
@@ -37,10 +37,10 @@ h2{
     justify-content: space-between;
     background-color: #d4d3FB;
     width: 95%;
-    height: 80%;
+    height: 85vh;
     border-radius: 12px;
-    margin: 2rem;
     color: #1E3090;
+    box-sizing: border-box;
 }
 
 
