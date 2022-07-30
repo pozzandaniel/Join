@@ -4,6 +4,7 @@ let dueDate;
 let category;
 let collaborators;
 let currentDraggedElement;
+let taskBoard;
 
 
 /**
@@ -89,6 +90,8 @@ function filterDoneTask(boardArray) {
  * @param {*} array - The sub-array with "position" set to 'board' and the "state" set to the related id.
  */
 function renderTaskTypology(taskTypology, i, array) {
+
+    taskBoard = array[i];
     id = array[i]['id'];
     title = array[i]['title'];
     dueDate = array[i]['dueDate'];
@@ -96,6 +99,7 @@ function renderTaskTypology(taskTypology, i, array) {
     collaborators = array[i]['assignedTo'];
     taskTypology.innerHTML += templateTaskTypology();
     colorBoardCategory(category);
+    displayContributors(taskBoard, id);
 }
 
 
@@ -107,10 +111,39 @@ function templateTaskTypology() {
         <span class = "ticket_date">${dueDate}</span> <br> 
         <p class = "ticket_title">${title}</p>
         <p class = "ticket_category">${category}</p>
-        <button>Show Ticket</button>
+        <div class = "board_btn_img">
+            <button>Show Ticket</button>
+            <div class = "board_img">
+            <img class="backlog_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px">
+            <img class="backlog_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -30px">
+            <img class="backlog_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -30px">
+            <img class="backlog_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -30px">
+            </div>
+        </div>
+        
         
     </div>
     </div>`;
+}
+
+function displayContributors(taskBoard, id){
+
+
+    if(taskBoard['assignedImg'][0] === undefined){
+        console.log('erste if: ', taskBoard['assignedImg'][0] === undefined );
+        console.log('element: ',)
+        document.getElementById(`contributor1-${id}`).classList.add('d-none');
+    }
+    if(taskBoard['assignedImg'][1] === undefined){
+        document.getElementById(`contributor2-${id}`).classList.add('d-none');
+    }
+    if(taskBoard['assignedImg'][2] === undefined){
+        document.getElementById(`contributor3-${id}`).classList.add('d-none');
+    }
+    if(taskBoard['assignedImg'][3] === undefined){
+        document.getElementById(`contributor4-${id}`).classList.add('d-none');
+    }
+
 }
 
 function showTicketBoard () {
