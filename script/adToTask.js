@@ -183,7 +183,7 @@ function selectAvatar(id) {
         selected[id] = true;
         document.getElementById(id).classList.add('selected-picture');
         document.getElementById('dialogAdTask').classList.add('d-none')
-        let path = document.getElementById(id).src;
+        let path = './assets/images/'+ document.getElementById(id).id + '.jpg';
         selectImages.push(path);
         selectedUsers.push(id);
         
