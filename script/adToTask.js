@@ -185,7 +185,7 @@ function selectAvatar(id) {
         document.getElementById('dialogAdTask').classList.add('d-none')
         let path = './assets/images/'+ document.getElementById(id).id + '.jpg';
         selectImages.push(path);
-        selectedUsers.push(id);
+        selectedUsers.push((' '+id + ' '));
         
     } else if (selected[id] == true) {
         selected[id] = false;

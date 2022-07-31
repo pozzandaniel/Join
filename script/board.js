@@ -114,10 +114,10 @@ function templateTaskTypology() {
         <div class = "board_btn_img">
             <button>Show Ticket</button>
             <div class = "board_img">
-            <img class="backlog_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px">
-            <img class="backlog_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -30px">
-            <img class="backlog_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -30px">
-            <img class="backlog_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -30px">
+            <img class="backlog_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px; width:30px; height: 30px">
+            <img class="backlog_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -30px; width:30px; height: 30px">
+            <img class="backlog_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -30px; width:30px; height: 30px">
+            <img class="backlog_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -30px; width:30px; height: 30px">
             </div>
         </div>
         

@@ -78,7 +78,6 @@ function templateBacklogTasks(categorycolor, id_task, task) {
     <div onclick = "addBoard(${id_task})" class = "backlog-table-tasks">
     
     <div style = "background-color:${categorycolor}" class = "category_color">
-    </div>
     
     <div class = "assigned_to" >
         <div class = backlog_profile_placeholder>
@@ -86,9 +85,10 @@ function templateBacklogTasks(categorycolor, id_task, task) {
             <img id="collaborator2-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][1]}" alt="" style = "margin-left: -30px">
             <img id="collaborator3-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][2]}" alt="" style = "margin-left: -30px">
             <img id="collaborator4-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][3]}" alt="" style = "margin-left: -30px">
-            
-        </div>
-            <p>${task['assignedTo']}</p>            
+       </div>
+        <p>${task['assignedTo']}</p>            
+    </div>
+
     </div>
         <div style = "width: 15%">
             <p>${task['category']}</p>
