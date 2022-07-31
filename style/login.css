@@ -1,3 +1,11 @@
+input{
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+}
+
 .login_container {
     height: 100%;
     width: 100%;

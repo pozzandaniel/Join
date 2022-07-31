@@ -57,20 +57,28 @@
                         <div class="mid-row">
                             <div class="category-container field-container">
                                 <h2>CATEGORY</h2>
-                                <select name="" id="category-input">
-                                    <option value="Management">Management</option>
-                                    <option value="Software Development">Software Development</option>
-                                    <option value="UX/UI Design">UX/UI Design</option>
-                                    <option value="Human Ressources">Human Ressources</option>
-                                </select>
+                                <div class="select-container">
+                                    <select name="" id="category-input" >
+                                        <option value="Management">Management</option>
+                                        <option value="Software Development">Software Development</option>
+                                        <option value="UX/UI Design">UX/UI Design</option>
+                                        <option value="Human Ressources">Human Ressources</option>
+                                    </select>
+                                    <span class="custom-array"></span>
+
+                                </div>
                             </div>
                             <div class="urgency-container field-container">
                                 <h2>URGENCY</h2>
-                                <select name="" id="urgency-input">
-                                    <option value="High">High</option>
-                                    <option value="Intermediate">Intermediate</option>
-                                    <option value="Low">Low</option>
-                                </select>
+                                <div class="select-container">
+                                    <select name="" id="urgency-input">
+                                        <option value="High">High</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Low">Low</option>
+                                    </select>
+                                    <span class="custom-array"></span>
+
+                                </div>
                             </div>
                         </div>
         
@@ -90,34 +98,34 @@
                                             <img id="addButton"  class="add-button" src="./assets/images/add-icon.png" alt="">
                                         </div>
                                     
-                                        <div id="avatarPicker" class="choose-name-input d-none">
+                                        <div id="avatarPicker" class="choose-name-input">
                                             <div class="avatar-box">
-                                                <div class="columnname">
-                                                    <span class="namesss">Kevin</span>
-                                                    <img onclick="selectAvatar('Kevin')" class="profilepicture" id="Kevin" src="./assets/images/kevin.jpg" alt="">
+                                                <div class="columnname d-none">
+                                                    <span class="assigned-name">Kevin</span>
+                                                    <img onclick="selectAvatar('Kevin')" class="profilepicture " id="Kevin" src="./assets/images/kevin.jpg" alt="">
                                                 </div>
-                                                <div class="columnname">
-                                                    <span class="namesss">Feros</span>
-                                                    <img onclick="selectAvatar('Feros')" class="profilepicture" id="Feros" src="./assets/images/feros.jpeg" alt="">
+                                                <div class="columnname d-none">
+                                                    <span class="assigned-name">Feros</span>
+                                                    <img onclick="selectAvatar('Feros')" class="profilepicture " id="Feros" src="./assets/images/feros.jpeg" alt="">
                                                 </div>  
-                                                <div class="columnname">
-                                                    <span class="namesss">Norbert</span>
-                                                    <img onclick="selectAvatar('Norbert')" class="profilepicture" id="Norbert" src="./assets/images/norbert.jpg" alt="">
+                                                <div class="columnname d-none">
+                                                    <span class="assigned-name">Norbert</span>
+                                                    <img onclick="selectAvatar('Norbert')" class="profilepicture " id="Norbert" src="./assets/images/norbert.jpg" alt="">
                                                 </div>  
-                                                <div class="columnname">
-                                                    <span class="namesss">Daniel</span>
-                                                    <img onclick="selectAvatar('Daniel')" class="profilepicture" id="Daniel" src="./assets/images/daniel.jpg" alt="">
+                                                <div class="columnname d-none">
+                                                    <span class="assigned-name">Daniel</span>
+                                                    <img onclick="selectAvatar('Daniel')" class="profilepicture " id="Daniel" src="./assets/images/daniel.jpg" alt="">
                                                 </div>
                                             </div>
-                                            <div id="dialogAdTask" class="dialog-adToTask d-none">
-                                                <p>Dem Feld <span>Assigned to</span> muss jemanden zugewiesen werden.</p>
-                                            </div>
+                                        </div>
+                                        <div id="dialogAdTask" class="dialog-adToTask d-none">
+                                            <p>Dem Feld <span>Assigned to</span> muss jemanden zugewiesen werden.</p>
                                         </div>
                                     </div>
     
     
                                     <div class="button-container">
-                                        <button>Cancel</button>
+                                        <button class="cancel-button">Cancel</button>
                                         <button id="button-form">Create Task</button>
                                     </div>
     
