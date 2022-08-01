@@ -75,7 +75,6 @@ function displayCollaborators(id_task, task){
 function templateBacklogTasks(categorycolor, id_task, task) {
 
     return /*html*/`
-<<<<<<< HEAD
     <div onclick = "addBoard(${id_task})" class = "backlog-table-tasks" style = "border-left: 8px solid ${categorycolor};">
 
         <div class = "assigned_to" >
@@ -90,30 +89,12 @@ function templateBacklogTasks(categorycolor, id_task, task) {
 
         <div class="category">
             <p>${task['category']}</p>
-=======
-    <div onclick = "addBoard(${id_task})" class = "backlog-table-tasks">
-   
-        <div style = "background-color:${categorycolor}" class = "category_color">
->>>>>>> c313844adc3b635ff3ff8366248de16ea8f1a68d
         </div>
-            <div class = "assigned_to" >
-                    <div class = backlog_profile_placeholder>
-                        <img id="collaborator1-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][0]}" alt="" style = "margin-left: 0px">
-                        <img id="collaborator2-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][1]}" alt="" style = "margin-left: -30px">
-                        <img id="collaborator3-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][2]}" alt="" style = "margin-left: -30px">
-                        <img id="collaborator4-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][3]}" alt="" style = "margin-left: -30px">
-                     </div>
-           
-                <p>${task['assignedTo']}</p>                           
-            </div>
-        <div class = "cat_desc">
-            <div style = "width: 10%">
-                <p>${task['category']}</p>
-            </div>
-                <div class= "backlog_description">
-                    <p>${task['description']}</p>
-                </div>
+    
+        <div class= "backlog_description">
+            <p>${task['description']}</p>
         </div>
+        <!-- </div> -->
     </div>
 `;
 }
