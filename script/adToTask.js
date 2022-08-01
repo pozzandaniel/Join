@@ -34,7 +34,6 @@ class CompleteTask {
  */
 function openDropdown() {
     if (dropdown == false) {
-        document.getElementById('dialogAdTask').classList.add('d-none');
         document.getElementsByClassName('columnname')[0].classList.remove('fade-out-animation');
         document.getElementsByClassName('columnname')[1].classList.remove('fade-out-animation');
         document.getElementsByClassName('columnname')[2].classList.remove('fade-out-animation');
@@ -49,6 +48,8 @@ function openDropdown() {
                 document.getElementsByClassName('columnname')[1].classList.remove('d-none');
                 document.getElementsByClassName('columnname')[2].classList.remove('d-none');
                 document.getElementsByClassName('columnname')[3].classList.remove('d-none');
+                document.getElementById('avatarPicker').classList.remove('d-none');
+
                 dropdown = true;
             }, 225)
        
@@ -57,7 +58,6 @@ function openDropdown() {
             
        
     } else if (dropdown == true) {
-        document.getElementById('dialogAdTask').classList.add('d-none');
         document.getElementsByClassName('columnname')[0].classList.remove('fade-in-animation');
         document.getElementsByClassName('columnname')[1].classList.remove('fade-in-animation');
         document.getElementsByClassName('columnname')[2].classList.remove('fade-in-animation');
@@ -72,6 +72,8 @@ function openDropdown() {
                 document.getElementsByClassName('columnname')[1].classList.add('d-none');
                 document.getElementsByClassName('columnname')[2].classList.add('d-none');
                 document.getElementsByClassName('columnname')[3].classList.add('d-none');
+                document.getElementById('avatarPicker').classList.add('d-none');
+
                 dropdown = false;
 
             },225)
@@ -94,7 +96,12 @@ function requestForm() {
         document.getElementById('button-form').style = 'opacity: 0.6';
         createTask();
     } else {
+        document.getElementById('dialogAdTask').classList.add('d-none');
         document.getElementById('avatarPicker').classList.remove('d-none');
+        document.getElementsByClassName('columnname')[0].classList.remove('d-none');
+        document.getElementsByClassName('columnname')[1].classList.remove('d-none');
+        document.getElementsByClassName('columnname')[2].classList.remove('d-none');
+        document.getElementsByClassName('columnname')[3].classList.remove('d-none');
         document.getElementById('dialogAdTask').classList.remove('d-none');
         dropdown = true;
     }
@@ -136,6 +143,14 @@ function refreshCreateTaskInputs(title, dueDate, category, urgency, description)
     category = '';
     urgency = '';
     description = '';
+}
+
+function cancelCompilation() {
+    document.getElementById('title-input').value = '';
+    document.getElementById('date-input').value = '';
+    document.getElementById('category-input').value = '';
+    document.getElementById('urgency-input').value = '';
+    document.getElementById('description-input').value = '';
 }
 
 

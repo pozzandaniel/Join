@@ -3,7 +3,7 @@
 } */
 
 h2{
-    font-size: 3.5vh;
+    font-size: 3vh;
 }
 
 .add-task-main-container {
@@ -39,7 +39,7 @@ h2{
     justify-content: space-between;
     background-color: #d4d3FB;
     width: 95%;
-    height: 85vh;
+    height: 80vh;
     border-radius: 12px;
     color: #1E3090;
     box-sizing: border-box;
@@ -88,13 +88,13 @@ input::placeholder{
 }
 
 input:-ms-input-placeholder{
-    color: black;
+    color: black ;
 }
 
 
 .title-input-container > input {
     width: 90%;
-    height: 10vh;
+    height: 7vh;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     outline: none;
@@ -102,7 +102,7 @@ input:-ms-input-placeholder{
 
 .date-container > input {
     width: 90%;
-    height: 10vh;
+    height: 7vh;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     outline: none;
@@ -138,7 +138,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .category-container select {
     width: 100%;
-    height: 10vh;
+    height: 7vh;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     outline: none;
@@ -147,7 +147,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .urgency-container select {
     width: 100%;
-    height: 10vh;
+    height: 7vh;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     outline: none;
@@ -267,8 +267,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .profilepicture {
-    width: 5vw;
-    height: 5vw;
+    width: 4vw;
+    height: 4vw;
     object-fit: cover;
     border-radius: 100%;
     cursor: pointer;
@@ -323,6 +323,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .assigned-name{
     font-size: 3vh;
+    margin-bottom: 1vh
 }
 
 .choose-name-input {

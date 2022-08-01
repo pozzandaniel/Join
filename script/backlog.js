@@ -75,22 +75,19 @@ function displayCollaborators(id_task, task){
 function templateBacklogTasks(categorycolor, id_task, task) {
 
     return /*html*/`
-    <div onclick = "addBoard(${id_task})" class = "backlog-table-tasks">
-    
-    <div style = "background-color:${categorycolor}" class = "category_color">
-    
-    <div class = "assigned_to" >
-        <div class = backlog_profile_placeholder>
-            <img id="collaborator1-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][0]}" alt="" style = "margin-left: 0px">
-            <img id="collaborator2-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][1]}" alt="" style = "margin-left: -30px">
-            <img id="collaborator3-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][2]}" alt="" style = "margin-left: -30px">
-            <img id="collaborator4-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][3]}" alt="" style = "margin-left: -30px">
-       </div>
-        <p>${task['assignedTo']}</p>            
-    </div>
+    <div onclick = "addBoard(${id_task})" class = "backlog-table-tasks" style = "border-left: 8px solid ${categorycolor};">
 
-    </div>
-        <div style = "width: 15%">
+        <div class = "assigned_to" >
+            <div class = backlog_profile_placeholder>
+                <img id="collaborator1-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][0]}" alt="" style = "margin-left: 0px">
+                <img id="collaborator2-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][1]}" alt="" style = "margin-left: -30px">
+                <img id="collaborator3-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][2]}" alt="" style = "margin-left: -30px">
+                <img id="collaborator4-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][3]}" alt="" style = "margin-left: -30px">
+        </div>
+            <p>${task['assignedTo']}</p>            
+        </div>
+
+        <div class="category">
             <p>${task['category']}</p>
         </div>
         <div class= "backlog_description">

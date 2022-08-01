@@ -1,4 +1,5 @@
 let imgUser;
+let openMobileMenu = false;
 
 /**
  * The function "start" is always called by loading of all sections
@@ -56,3 +57,24 @@ function closeMenuu() {
 function getHome() {
     window.location = './board.html';
 }
+
+function showMenuMobile() {
+    if(openMobileMenu == false) {
+        document.getElementsByClassName('menu-list')[0].classList.remove('fade_out_menu_animation');
+        document.getElementsByClassName('menu-list')[0].classList.add('fade_in_menu_animation');
+        document.getElementsByClassName('menu-list')[0].style = 'transform: translateX(0)';
+        document.getElementsByClassName('footer-sidebar')[0].classList.remove('fade_out_menu_animation');
+        document.getElementsByClassName('footer-sidebar')[0].classList.add('fade_in_menu_animation');
+        document.getElementsByClassName('footer-sidebar')[0].classList.add('mobile_footer-sidebar');
+        openMobileMenu = true;
+    } else {
+        document.getElementsByClassName('menu-list')[0].classList.remove('fade_in_menu_animation');
+        document.getElementsByClassName('menu-list')[0].classList.add('fade_out_menu_animation');   
+        document.getElementsByClassName('menu-list')[0].style = 'transform: translateX(30vw)';   
+        document.getElementsByClassName('footer-sidebar')[0].classList.remove('fade_in_menu_animation');
+        document.getElementsByClassName('footer-sidebar')[0].classList.add('fade_out_menu_animation');   
+        document.getElementsByClassName('footer-sidebar')[0].classList.remove('mobile_footer-sidebar');   
+        openMobileMenu = false;
+    }
+}
+
