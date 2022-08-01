@@ -23,14 +23,14 @@
     margin: 0;
     width: 100%;
     text-align: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 
 .task {
     background-color: #F4F3FB;
     min-height: 650px;
-    width: 16rem;
+    width: 20vw;
     display: flex;
     flex-direction: column;
     align-items: center;   

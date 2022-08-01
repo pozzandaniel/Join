@@ -334,3 +334,24 @@
 }
 
 /* /////////////////// */
+
+/* Board section */
+
+@media (max-width: 1200px) {
+    .board-container {
+        flex-wrap: wrap;
+    }
+
+    .task-container {
+        height: 50%;
+        width: 40%;
+    }
+
+    .task {
+        min-height: unset;
+        width: 100%;
+        overflow: auto;
+    }
+}
+
+/* //////////////////// */

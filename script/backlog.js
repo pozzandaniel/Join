@@ -83,7 +83,7 @@ function templateBacklogTasks(categorycolor, id_task, task) {
                 <img id="collaborator2-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][1]}" alt="" style = "margin-left: -30px">
                 <img id="collaborator3-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][2]}" alt="" style = "margin-left: -30px">
                 <img id="collaborator4-${id_task}" class="backlog_profil_img" src="${task['assignedImg'][3]}" alt="" style = "margin-left: -30px">
-        </div>
+            </div>
             <p>${task['assignedTo']}</p>            
         </div>
 
@@ -94,7 +94,6 @@ function templateBacklogTasks(categorycolor, id_task, task) {
         <div class= "backlog_description">
             <p>${task['description']}</p>
         </div>
-        <!-- </div> -->
     </div>
 `;
 }
