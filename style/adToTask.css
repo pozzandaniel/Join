@@ -127,6 +127,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 3vw;
     padding: 1vw;
     border-left: 3px solid rgba(0, 0, 0, 0.2);
+
+   
+
 }
 
 .menu_tags7 {	

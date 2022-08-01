@@ -62,18 +62,26 @@ function showMenuMobile() {
     if(openMobileMenu == false) {
         document.getElementsByClassName('menu-list')[0].classList.remove('fade_out_menu_animation');
         document.getElementsByClassName('menu-list')[0].classList.add('fade_in_menu_animation');
-        document.getElementsByClassName('menu-list')[0].style = 'transform: translateX(0)';
         document.getElementsByClassName('footer-sidebar')[0].classList.remove('fade_out_menu_animation');
         document.getElementsByClassName('footer-sidebar')[0].classList.add('fade_in_menu_animation');
         document.getElementsByClassName('footer-sidebar')[0].classList.add('mobile_footer-sidebar');
+        document.getElementsByClassName('menu-list')[0].style = 'transform: translateX(0) !important';
         openMobileMenu = true;
     } else {
         document.getElementsByClassName('menu-list')[0].classList.remove('fade_in_menu_animation');
         document.getElementsByClassName('menu-list')[0].classList.add('fade_out_menu_animation');   
-        document.getElementsByClassName('menu-list')[0].style = 'transform: translateX(30vw)';   
         document.getElementsByClassName('footer-sidebar')[0].classList.remove('fade_in_menu_animation');
         document.getElementsByClassName('footer-sidebar')[0].classList.add('fade_out_menu_animation');   
         document.getElementsByClassName('footer-sidebar')[0].classList.remove('mobile_footer-sidebar');   
+        if(window.innerWidth < 700){
+            document.getElementsByClassName('menu-list')[0].style = 'transform: translateX(40vw)';   
+
+        } else if(window.innerWidth < 500){
+            document.getElementsByClassName('menu-list')[0].style = 'transform: translateX(65vw)';   
+            
+        } else {
+            document.getElementsByClassName('menu-list')[0].style = 'transform: translateX(30vw)';
+        }   
         openMobileMenu = false;
     }
 }
