@@ -146,8 +146,7 @@ function displayContributors(taskBoard, id){
 
 function showTicketBoard (id) {
 
-    document.getElementById("ticket_popup").classList.remove('d-none');
-
+    document.getElementById("popupBackground").classList.remove('d-none');
     let array = allTasks.filter( task => task['id'] == id);
     console.log('array is:',array);
 
@@ -156,29 +155,45 @@ function showTicketBoard (id) {
     category = array[0].category;
     description = array[0].description;
     assignedImg = array[0].assignedImg;
+    assignedTo = array[0].assignedTo;
+    urgency = array[0].urgency;
 
 
     document.getElementById("ticket_popup").innerHTML = 
     `<div>
     
             <div class = "ticket_container">
-        
-                <span class = "ticket_date">${dueDate}</span> <br> 
+                <div class="top_popup">
+                    <span class = "ticket_date">${dueDate}</span>
+                    <img onclick="closePopup()" src="./assets/images/close.png">
+                </div>
+                 
                 <p class = "ticket_title">${title}</p>
                 <p class = "ticket_description">${description}</p>
-                <p class = "ticket_category">${category}</p>
 
-                <div class = "board_img">
-                    <img class="backlog_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" style = "margin-left: 0px; width:30px; height: 30px">
-                    <img class="backlog_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" style = "margin-left: -30px; width:30px; height: 30px">
-                    <img class="backlog_profil_img" id="contributor33-${id}" src="${assignedImg[2]}" style = "margin-left: -30px; width:30px; height: 30px">
-                    <img class="backlog_profil_img" id="contributor44-${id}" src="${assignedImg[3]}" style = "margin-left: -30px; width:30px; height: 30px">
+
+                <div class="middle_popup">
+                    <div class="middle_leftbox">
+                        <p class = "ticket_category">${category}</p>
+                        <div class = "board_img">
+                            <img class="popup_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" >
+                            <img class="popup_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" >
+                            <img class="popup_profil_img" id="contributor33-${id}" src="${assignedImg[2]}" >
+                            <img class="popup_profil_img" id="contributor44-${id}" src="${assignedImg[3]}" >
+                            <span>Assigned to: ${assignedTo}</span>
+                        </div>
+
+                    </div>
+                    <div class="middle_rightbox">
+                        <img id="urgency_icon" src=""><p>${urgency}</p>
+                    </div>
                 </div>
             </div>
-            <img src= "assets/images/icons8-plus.png" onclick = "deleteTask(${id})">
+            <img class="trash-icon"  src= "assets/images/trash.png" onclick = "deleteTask(${id})">
         
     </div>`;
     showPopupCollaborators(id, assignedImg);
+    colorUrgencyPopup(urgency);
 
 }
 
@@ -194,6 +209,16 @@ function showPopupCollaborators(id, assignedImg) {
     }
     if(assignedImg[3] === undefined){
         document.getElementById(`contributor44-${id}`).classList.add('d-none');
+    }
+}
+
+function colorUrgencyPopup(urgency){
+    if(urgency == 'High'){
+        document.getElementById('urgency_icon').src = './assets/images/important.png';
+    } else if(urgency == 'Intermediate'){
+        document.getElementById('urgency_icon').src = './assets/images/intermediate.png';
+    } else {
+        document.getElementById('urgency_icon').src = './assets/images/low.png';
     }
 }
 
@@ -273,10 +298,15 @@ function moveTo(taskTypology) {
  * @param {number} id 
  */
 function deleteTask(id) {
-    document.getElementById("ticket_popup").classList.add('d-none');
+    document.getElementById("popupBackground").classList.add('d-none');
     let array = allTasks.filter(t => t['id'] == id);
     let index = allTasks.indexOf(array[0]);
     allTasks.splice(index, 1);
     saveAllTasks();
     renderHTML();
+}
+
+function closePopup() {
+    document.getElementById("popupBackground").classList.add('d-none');
+
 }

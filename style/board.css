@@ -61,7 +61,14 @@
 }
 
 
-
+.popup_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;  
+    background-color: rgba(128, 128, 128, 0.319);
+}
 
 
 .ticket_popup {
@@ -70,7 +77,6 @@
     height: 40%;
     top: 30%;
     left: 30%;
-    z-index: 1;
     border: 5px solid rgba(0, 0, 0, 0.1);
     background-color: #F4F3FB;
 
@@ -137,9 +143,60 @@
     text-transform: capitalize;
 }
 
+
+
 .board_btn_img {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.top_popup {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top_popup img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.middle_popup {
+    display: flex;
+    justify-content: space-between;
+}
+
+.middle_rightbox {
+    display: flex;
+    align-items: center;
+}
+
+.middle_rightbox img {
+    height: 40px;
+    width: 40px;
+}
+
+.trash-icon{
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.trash-icon:hover{
+    filter: brightness(1.2);
+}
+
+.board_img {
+    display: flex;
+    align-items: center;
+}
+
+.popup_profil_img {
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+    border-radius: 100%;
+    cursor: pointer;
 }
