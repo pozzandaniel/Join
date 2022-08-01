@@ -104,7 +104,7 @@ function renderTaskTypology(taskTypology, i, array) {
 
 
 function templateTaskTypology() {
-    return `<div onclick="showTicket(${id})" draggable="true" ondragstart="startDragging(${id})" class = "user-story" >
+    return `<div draggable="true" ondragstart="startDragging(${id})" class = "user-story" >
     <div id = "board_category_color${id}" class = "board_category_color"></div>
     <div class = "ticket_container">
         <div id="userStory${id}" class = "board_urgency"></div>
@@ -112,7 +112,7 @@ function templateTaskTypology() {
         <p class = "ticket_title">${title}</p>
         <p class = "ticket_category">${category}</p>
         <div class = "board_btn_img">
-            <button>Show Ticket</button>
+            <button onclick="showTicketBoard(${id})">Show Ticket</button>
             <div class = "board_img">
             <img class="backlog_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px; width:30px; height: 30px">
             <img class="backlog_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -30px; width:30px; height: 30px">
@@ -130,8 +130,6 @@ function displayContributors(taskBoard, id){
 
 
     if(taskBoard['assignedImg'][0] === undefined){
-        console.log('erste if: ', taskBoard['assignedImg'][0] === undefined );
-        console.log('element: ',)
         document.getElementById(`contributor1-${id}`).classList.add('d-none');
     }
     if(taskBoard['assignedImg'][1] === undefined){
@@ -146,10 +144,57 @@ function displayContributors(taskBoard, id){
 
 }
 
-function showTicketBoard () {
-    document.getElementById("ticket_popup").innerHTML += 
-    '<p style:"cursor:pointer" onclick="deleteTask(${id})">DELETE</p>' ;
+function showTicketBoard (id) {
+
+    document.getElementById("ticket_popup").classList.remove('d-none');
+
+    let array = allTasks.filter( task => task['id'] == id);
+    console.log('array is:',array);
+
+    title = array[0].title;
+    dueDate = array[0].dueDate;
+    category = array[0].category;
+    description = array[0].description;
+    assignedImg = array[0].assignedImg;
+
+
+    document.getElementById("ticket_popup").innerHTML = 
+    `<div>
     
+            <div class = "ticket_container">
+        
+                <span class = "ticket_date">${dueDate}</span> <br> 
+                <p class = "ticket_title">${title}</p>
+                <p class = "ticket_description">${description}</p>
+                <p class = "ticket_category">${category}</p>
+
+                <div class = "board_img">
+                    <img class="backlog_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" style = "margin-left: 0px; width:30px; height: 30px">
+                    <img class="backlog_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" style = "margin-left: -30px; width:30px; height: 30px">
+                    <img class="backlog_profil_img" id="contributor33-${id}" src="${assignedImg[2]}" style = "margin-left: -30px; width:30px; height: 30px">
+                    <img class="backlog_profil_img" id="contributor44-${id}" src="${assignedImg[3]}" style = "margin-left: -30px; width:30px; height: 30px">
+                </div>
+            </div>
+            <img src= "assets/images/icons8-plus.png" onclick = "deleteTask(${id})">
+        
+    </div>`;
+    showPopupCollaborators(id, assignedImg);
+
+}
+
+function showPopupCollaborators(id, assignedImg) {
+    if(assignedImg[0] === undefined){
+        document.getElementById(`contributor11-${id}`).classList.add('d-none');
+    }
+    if(assignedImg[1] === undefined){
+        document.getElementById(`contributor22-${id}`).classList.add('d-none');
+    }
+    if(assignedImg[2] === undefined){
+        document.getElementById(`contributor33-${id}`).classList.add('d-none');
+    }
+    if(assignedImg[3] === undefined){
+        document.getElementById(`contributor44-${id}`).classList.add('d-none');
+    }
 }
 
 function colorBoardCategory(category) {
@@ -228,14 +273,10 @@ function moveTo(taskTypology) {
  * @param {number} id 
  */
 function deleteTask(id) {
+    document.getElementById("ticket_popup").classList.add('d-none');
     let array = allTasks.filter(t => t['id'] == id);
     let index = allTasks.indexOf(array[0]);
     allTasks.splice(index, 1);
     saveAllTasks();
     renderHTML();
-}
-
-function showTicket(id) {
-
-
 }

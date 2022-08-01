@@ -66,13 +66,13 @@
 
 .ticket_popup {
     position: absolute;
-    width: 20%;
-    height: 20%;
-    top: 40%;
-    left: 40%;
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
     z-index: 1;
     border: 5px solid rgba(0, 0, 0, 0.1);
-    display: none;
+    background-color: #F4F3FB;
 
 }
 
