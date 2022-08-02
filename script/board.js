@@ -141,15 +141,16 @@ function displayContributors(taskBoard, id){
     if(taskBoard['assignedImg'][3] === undefined){
         document.getElementById(`contributor4-${id}`).classList.add('d-none');
     }
-
+    
 }
 
 function showTicketBoard (id) {
-
+    // checkStatus(state, id);
     document.getElementById("popupBackground").classList.remove('d-none');
     let array = allTasks.filter( task => task['id'] == id);
     console.log('array is:',array);
-
+    state = array[0].state;
+    id = array[0].id;
     title = array[0].title;
     dueDate = array[0].dueDate;
     category = array[0].category;
@@ -157,15 +158,15 @@ function showTicketBoard (id) {
     assignedImg = array[0].assignedImg;
     assignedTo = array[0].assignedTo;
     urgency = array[0].urgency;
-
-
+    
+    
     document.getElementById("ticket_popup").innerHTML = 
     `<div>
     
             <div class = "ticket_container">
                 <div class="top_popup">
                     <span class = "ticket_date">${dueDate}</span>
-                    <img onclick="closePopup()" src="./assets/images/close.png">
+                    <img onclick="closePopup(${id})" src="./assets/images/close.png">
                 </div>
                  
                 <p class = "ticket_title">${title}</p>
@@ -176,25 +177,41 @@ function showTicketBoard (id) {
                     <div class="middle_leftbox">
                         <p class = "ticket_category">${category}</p>
                         <div class = "board_img">
-                            <img class="popup_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" >
-                            <img class="popup_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" >
-                            <img class="popup_profil_img" id="contributor33-${id}" src="${assignedImg[2]}" >
-                            <img class="popup_profil_img" id="contributor44-${id}" src="${assignedImg[3]}" >
-                            <span>Assigned to: ${assignedTo}</span>
+                        <img class="popup_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" >
+                        <img class="popup_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" >
+                        <img class="popup_profil_img" id="contributor33-${id}" src="${assignedImg[2]}" >
+                        <img class="popup_profil_img" id="contributor44-${id}" src="${assignedImg[3]}" >
+                        <span>Assigned to: ${assignedTo}</span>
                         </div>
-
-                    </div>
-                    <div class="middle_rightbox">
+                        
+                        </div>
+                        </div>
+                        </div>
+                        <img class="trash-icon"  src= "assets/images/trash.png" onclick = "deleteTask(${id})">
+                        <div class="middle_rightbox">
                         <img id="urgency_icon" src=""><p>${urgency}</p>
-                    </div>
-                </div>
-            </div>
-            <img class="trash-icon"  src= "assets/images/trash.png" onclick = "deleteTask(${id})">
-        
-    </div>`;
-    showPopupCollaborators(id, assignedImg);
-    colorUrgencyPopup(urgency);
-
+                        </div>
+                        <div class="change_status">
+                        <select id="change_status">
+                            <option  value="" disabled selected>Select state</option>
+                            <option  value="toDoTask" >To do</option>
+                            <option value="progressTask">In progress</option>
+                            <option value="testingTask" >Testing</option>
+                            <option value="doneTask">Done</option>
+                            </select>
+                            </div>
+                            
+                            </div>`;
+                            showPopupCollaborators(id, assignedImg);
+                            colorUrgencyPopup(urgency);
+                            
+                        }
+                        
+function checkStatus(state, id){
+    document.getElementById(state + '_popup').selected; 
+    console.log('option is: ', option);
+    showTicketBoard(id);
+   
 }
 
 function showPopupCollaborators(id, assignedImg) {
@@ -306,7 +323,13 @@ function deleteTask(id) {
     renderHTML();
 }
 
-function closePopup() {
+function closePopup(id) {
+    currentDraggedElement = id;
+    console.log('id is: ', id);
+    console.log('currentdragelem: ', currentDraggedElement);
+    let taskvalue = document.getElementById('change_status').value;
+    console.log('taskvalue: ', taskvalue);
+    moveTo(taskvalue);
     document.getElementById("popupBackground").classList.add('d-none');
 
 }
