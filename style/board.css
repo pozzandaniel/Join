@@ -67,7 +67,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;  
-    background-color: rgba(128, 128, 128, 0.319);
+    background-color: #20319271;
 }
 
 
@@ -77,8 +77,9 @@
     height: 40%;
     top: 30%;
     left: 30%;
-    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
     background-color: #F4F3FB;
+    padding: 10px;
 
 }
 
@@ -110,7 +111,7 @@
 .ticket_container button {
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #6F96FF;
+    background-color: #203192;
     color: white;
     border: 1px solid rgb(253, 252, 252);
     border-radius: 6px;
@@ -126,8 +127,7 @@
 }
 
 .ticket_category {
-    margin: 0;
-    
+    margin-bottom: 5px;
 }
 
 .ticket_date {
@@ -166,6 +166,8 @@
 .middle_popup {
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    bottom: 20%;
 }
 
 .middle_rightbox {
@@ -176,6 +178,8 @@
 .middle_rightbox img {
     height: 40px;
     width: 40px;
+    padding-left: 10px;
+    padding-right: 5px;
 }
 
 .trash-icon{
@@ -196,7 +200,40 @@
 .popup_profil_img {
     height: 40px;
     width: 40px;
-    margin: 10px;
+    margin: 5px;
     border-radius: 100%;
     cursor: pointer;
+}
+
+.ticket_popup_footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #203192;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    color: white;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+#change_status {
+    border-radius: 6px;
+    border-style: hidden;
+    background-color: #203192;
+    opacity: 0.8;
+    outline: none;
+    color: white
+    
+}
+
+#change_status:hover {
+    cursor: pointer;
+    filter: brightness(1.2);
+}
+
+#change_status option :hover{
+   cursor: pointer;
 }

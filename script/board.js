@@ -170,37 +170,40 @@ function showTicketBoard (id) {
                 </div>
                  
                 <p class = "ticket_title">${title}</p>
+                <p>Description:</p>
                 <p class = "ticket_description">${description}</p>
 
 
                 <div class="middle_popup">
                     <div class="middle_leftbox">
-                        <p class = "ticket_category">${category}</p>
+                    <p class = "ticket_category">Category: ${category}</p> <br>
+                        <span>Assigned to: ${assignedTo}</span>
                         <div class = "board_img">
                         <img class="popup_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" >
                         <img class="popup_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" >
                         <img class="popup_profil_img" id="contributor33-${id}" src="${assignedImg[2]}" >
                         <img class="popup_profil_img" id="contributor44-${id}" src="${assignedImg[3]}" >
-                        <span>Assigned to: ${assignedTo}</span>
+                        
                         </div>
                         
                         </div>
                         </div>
                         </div>
-                        <img class="trash-icon"  src= "assets/images/trash.png" onclick = "deleteTask(${id})">
+                        <div class = "ticket_popup_footer">
                         <div class="middle_rightbox">
-                        <img id="urgency_icon" src=""><p>${urgency}</p>
+                        <span>Urgency:</span><img id="urgency_icon" src=""><p>${urgency}</p>
                         </div>
-                        <div class="change_status">
                         <select id="change_status">
-                            <option  value="" disabled selected>Select state</option>
-                            <option  value="toDoTask" >To do</option>
-                            <option value="progressTask">In progress</option>
-                            <option value="testingTask" >Testing</option>
-                            <option value="doneTask">Done</option>
-                            </select>
-                            </div>
-                            
+                        <option value ="" disabled style="display:none">Select state</option>
+                        <option  value="toDoTask" >To do</option>
+                        <option value="progressTask">In progress</option>
+                        <option value="testingTask" >Testing</option>
+                        <option value="doneTask">Done</option>
+                        </select>
+                        <img class="trash-icon"  src= "assets/images/trash.png" onclick = "deleteTask(${id})">
+                        </div>
+                        
+                        
                             </div>`;
                             showPopupCollaborators(id, assignedImg);
                             colorUrgencyPopup(urgency);
@@ -324,12 +327,13 @@ function deleteTask(id) {
 }
 
 function closePopup(id) {
-    currentDraggedElement = id;
-    console.log('id is: ', id);
-    console.log('currentdragelem: ', currentDraggedElement);
     let taskvalue = document.getElementById('change_status').value;
-    console.log('taskvalue: ', taskvalue);
-    moveTo(taskvalue);
+    if(taskvalue){
+        currentDraggedElement = id;
+   
+       moveTo(taskvalue);
+    }   
+        
     document.getElementById("popupBackground").classList.add('d-none');
 
 }
