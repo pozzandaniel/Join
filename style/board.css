@@ -62,24 +62,26 @@
 
 
 .popup_background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;  
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #20319271;
 }
 
 
 .ticket_popup {
     position: absolute;
+  
     width: 40%;
-    height: 40%;
-    top: 30%;
-    left: 30%;
+   
     border-radius: 6px;
     background-color: #F4F3FB;
-    padding: 10px;
+
 
 }
 
@@ -105,7 +107,7 @@
 }
 
 .ticket_container {
-    padding-top: 8px;
+    padding: 10px;
 }
 
 .ticket_container button {
@@ -144,8 +146,9 @@
 }
 
 .ticket_description {
-    height: 8vh;
+    height: 18vh;
     overflow: auto;
+    text-align: justify;
     
 }
 
@@ -172,8 +175,7 @@
 .middle_popup {
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    bottom: 20%;
+   
 }
 
 .middle_rightbox {
@@ -216,10 +218,6 @@
     justify-content: space-around;
     background-color: #203192;
     align-items: center;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
     color: white;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
@@ -231,7 +229,8 @@
     background-color: #203192;
     opacity: 0.8;
     outline: none;
-    color: white
+    color: white;
+    font-size: 1em;
     
 }
 
@@ -243,3 +242,4 @@
 #change_status option :hover{
    cursor: pointer;
 }
+
