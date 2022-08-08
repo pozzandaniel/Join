@@ -306,8 +306,7 @@
 }
 
 @media (max-width: 1000px) {
-    .workspace, .backlogspace {
-        overflow: hidden !important;
+    .workspace, .backlogspace {        
         margin-top: 15vh;
     }
 
@@ -468,21 +467,30 @@
     }
 
     .task-container {
-        height: 50%;
+        height: 40%;
         width: 40%;
     }
 
     .task {
-        min-height: unset;
+        min-height: 70%;
         width: 100%;
         overflow: auto;
+    }
+}
+
+@media (max-width: 1000px) {
+    .task {
+        height: 250px;
     }
 }
 
 @media (max-width: 700px) {
     .task-container {
         width: 80%;
-        height: 24%;
+        height: 300px;
+    }
+    .board-container {
+        height: 160vh;
     }
 }
 
@@ -495,6 +503,11 @@
 @media (max-width: 500px) {
     .task-container {
         width: 98%;
+        height: 38vh;
+    }
+
+    .workspace {
+        height: 160vh;
     }
 
     .task-container h2 {
@@ -504,3 +517,50 @@
 }
 
 /* //////////////////// */
+
+/* Ticket Popup section */
+
+@media (max-width: 1000px) {
+    .ticket_popup {
+        width: 60%;
+        height: 60%;
+        top: 20%;
+        left: 20%;   
+    }
+
+    .ticket_description {
+        height: unset;
+    }
+}
+
+@media (max-width: 750px) {
+    .ticket_popup {
+        width: 60%;
+        height: 80%;
+        top: 10%;
+        left: 20%;   
+    }
+
+    .ticket_description {
+        height: unset;
+    }
+}
+
+@media (max-width: 700px) {
+        .ticket_popup_footer {
+            height: 130px;
+            flex-direction: column-reverse;
+        }
+    }
+
+    @media (max-width: 500px) {
+
+        .ticket_popup {
+            width: 70%;
+            height: 90%;
+            top: 5%;
+            left: 15%;   
+        }
+
+
+    }

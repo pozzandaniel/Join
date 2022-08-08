@@ -143,6 +143,12 @@
     text-transform: capitalize;
 }
 
+.ticket_description {
+    height: 8vh;
+    overflow: auto;
+    
+}
+
 
 
 .board_btn_img {

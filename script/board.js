@@ -170,14 +170,14 @@ function showTicketBoard (id) {
                 </div>
                  
                 <p class = "ticket_title">${title}</p>
-                <p>Description:</p>
+                <p><b>Description:</b></p>
                 <p class = "ticket_description">${description}</p>
 
 
                 <div class="middle_popup">
-                    <div class="middle_leftbox">
-                    <p class = "ticket_category">Category: ${category}</p> <br>
-                        <span>Assigned to: ${assignedTo}</span>
+                    <div class="middle_leftbox"><br>
+                    <p class = "ticket_category"><b>Category: </b>${category}</p> 
+                        <span><b>Assigned to:</b> ${assignedTo}</span>
                         <div class = "board_img">
                         <img class="popup_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" >
                         <img class="popup_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" >
