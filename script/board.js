@@ -114,10 +114,10 @@ function templateTaskTypology() {
         <div class = "board_btn_img">
             <button onclick="showTicketBoard(${id})">Show Ticket</button>
             <div class = "board_img">
-            <img class="backlog_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px; width:30px; height: 30px">
-            <img class="backlog_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -30px; width:30px; height: 30px">
-            <img class="backlog_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -30px; width:30px; height: 30px">
-            <img class="backlog_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -30px; width:30px; height: 30px">
+            <img class="backlog_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px; width:40px; height: 40px">
+            <img class="backlog_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -20px; width:40px; height: 40px">
+            <img class="backlog_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -20px; width:40px; height: 40px">
+            <img class="backlog_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -20px; width:40px; height: 40px">
             </div>
         </div>
         
@@ -167,7 +167,7 @@ function showTicketBoard (id) {
 
                 <div class="top_popup">
                     <span class = "ticket_date">${dueDate}</span>
-                    <img onclick="closePopup(${id})" src="./assets/images/close.png">
+                    <img onclick="closePopup(${id})" src="./assets/images/close.png" style="margin-right:20px">
                 </div>
                 <p class = "ticket_title">${title}</p>
                 <p class = "ticket_description_label"><b>Description:</b></p>
