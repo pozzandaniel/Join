@@ -34,53 +34,55 @@ class CompleteTask {
  */
 function openDropdown() {
     if (dropdown == false) {
-        document.getElementsByClassName('columnname')[0].classList.remove('fade-out-animation');
-        document.getElementsByClassName('columnname')[1].classList.remove('fade-out-animation');
-        document.getElementsByClassName('columnname')[2].classList.remove('fade-out-animation');
-        document.getElementsByClassName('columnname')[3].classList.remove('fade-out-animation');
-        setTimeout(()=>{
-            document.getElementsByClassName('columnname')[0].classList.add('fade-in-animation');
-            document.getElementsByClassName('columnname')[1].classList.add('fade-in-animation');
-            document.getElementsByClassName('columnname')[2].classList.add('fade-in-animation');
-            document.getElementsByClassName('columnname')[3].classList.add('fade-in-animation');
-            setTimeout(() => {
-                document.getElementsByClassName('columnname')[0].classList.remove('d-none');
-                document.getElementsByClassName('columnname')[1].classList.remove('d-none');
-                document.getElementsByClassName('columnname')[2].classList.remove('d-none');
-                document.getElementsByClassName('columnname')[3].classList.remove('d-none');
-                document.getElementById('avatarPicker').classList.remove('d-none');
-
-                dropdown = true;
-            }, 225)
-       
-
-        },225)
+        removeAnimation('fade-out-animation');
+        fadeInAvatar();
             
        
     } else if (dropdown == true) {
-        document.getElementsByClassName('columnname')[0].classList.remove('fade-in-animation');
-        document.getElementsByClassName('columnname')[1].classList.remove('fade-in-animation');
-        document.getElementsByClassName('columnname')[2].classList.remove('fade-in-animation');
-        document.getElementsByClassName('columnname')[3].classList.remove('fade-in-animation');
-        setTimeout(()=>{
-            document.getElementsByClassName('columnname')[0].classList.add('fade-out-animation');
-            document.getElementsByClassName('columnname')[1].classList.add('fade-out-animation');
-            document.getElementsByClassName('columnname')[2].classList.add('fade-out-animation');
-            document.getElementsByClassName('columnname')[3].classList.add('fade-out-animation');
-            setTimeout(()=>{
-                document.getElementsByClassName('columnname')[0].classList.add('d-none');
-                document.getElementsByClassName('columnname')[1].classList.add('d-none');
-                document.getElementsByClassName('columnname')[2].classList.add('d-none');
-                document.getElementsByClassName('columnname')[3].classList.add('d-none');
-                document.getElementById('avatarPicker').classList.add('d-none');
-
-                dropdown = false;
-
-            },225)
-
-        }, 250)
+        removeAnimation('fade-in-animation');
+        fadeOutAvatar();
     }
     
+}
+
+function removeAnimation(animation) {
+    document.getElementsByClassName('columnname')[0].classList.remove(animation);
+    document.getElementsByClassName('columnname')[1].classList.remove(animation);
+    document.getElementsByClassName('columnname')[2].classList.remove(animation);
+    document.getElementsByClassName('columnname')[3].classList.remove(animation);
+}
+
+function addAnimation(animation) {
+    document.getElementsByClassName('columnname')[0].classList.add(animation);
+    document.getElementsByClassName('columnname')[1].classList.add(animation);
+    document.getElementsByClassName('columnname')[2].classList.add(animation);
+    document.getElementsByClassName('columnname')[3].classList.add(animation);   
+}
+
+function fadeInAvatar() {
+    setTimeout(()=>{
+        addAnimation('fade-in-animation');
+        setTimeout(() => {
+            removeAnimation('d-none');
+            document.getElementById('avatarPicker').classList.remove('d-none');
+            dropdown = true;
+        }, 225)
+
+    },225)
+}
+
+function fadeOutAvatar() {
+    setTimeout(()=>{
+        addAnimation('fade-out-animation');
+        setTimeout(()=>{
+            addAnimation('d-none');
+            document.getElementById('avatarPicker').classList.add('d-none');
+
+            dropdown = false;
+
+        },225)
+
+    }, 250)
 }
 
 
@@ -98,10 +100,7 @@ function requestForm() {
     } else {
         document.getElementById('dialogAdTask').classList.add('d-none');
         document.getElementById('avatarPicker').classList.remove('d-none');
-        document.getElementsByClassName('columnname')[0].classList.remove('d-none');
-        document.getElementsByClassName('columnname')[1].classList.remove('d-none');
-        document.getElementsByClassName('columnname')[2].classList.remove('d-none');
-        document.getElementsByClassName('columnname')[3].classList.remove('d-none');
+        removeAnimation('d-none');
         document.getElementById('dialogAdTask').classList.remove('d-none');
         dropdown = true;
     }
@@ -121,10 +120,8 @@ function createTask() {
     let task_description = document.getElementById('description-input');
     let completeTask = new CompleteTask( generateId, task_title.value, task_due_date.value, task_category.value, 
     task_urgency.value, task_description.value, selectedUsers, selectImages, new Date().getTime(), 'backlog', 'toDoTask');   
-
     refreshCreateTaskInputs(task_title.value, task_due_date.value, task_category.value,
     task_urgency.value, task_description.value);
-    
     updateAllTasks(completeTask); 
 }
 

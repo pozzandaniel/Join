@@ -15,10 +15,11 @@ async function renderBacklogTasks() {
     backlogStories = document.getElementById('backlogStories-container');
     backlogArray = allTasks.filter(t => t['position'] == 'backlog');
     backlogStories.innerHTML = '';
+    generateTasks(backlogArray, backlogStories);
     
-    
-    
-    
+}
+
+function generateTasks(backlogArray, backlogStories) {
     for (let i = 0; i < backlogArray.length; i++) {
         task = backlogArray[i];
         id_task = task['id'];
@@ -26,12 +27,7 @@ async function renderBacklogTasks() {
         categoryColor(task);
         backlogStories.innerHTML += templateBacklogTasks(categorycolor , id_task, task);
         displayCollaborators(id_task, task);
-        
-        
     } 
-    
-
-    
 }
 
 function categoryColor(task) {
