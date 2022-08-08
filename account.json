@@ -2,23 +2,23 @@
     "name": "Daniel",
     "email": "pozzan.dnl@gmail.com",
     "password": "1234",
-    "bild": "./assets/images/daniel.jpg"
+    "bild": "./assets/images/Daniel.jpg"
 },
 {
     "name": "Norbert",
     "email": "norbrider87@gmail.com",
     "password": "3456",
-    "bild": "./assets/images/norbert.jpg"
+    "bild": "./assets/images/Norbert.jpg"
 },
 {
     "name": "Feros",
     "email": "",
     "password": "7890",
-    "bild": "./assets/images/feros.jpeg"
+    "bild": "./assets/images/Feros.jpeg"
 },
 {
     "name": "Kevin",
     "email": "",
     "password": "1011",
-    "bild": "./assets/images/kevin.jpg"
+    "bild": "./assets/images/Kevin.jpg"
 }]
