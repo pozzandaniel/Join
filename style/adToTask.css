@@ -127,9 +127,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 3vw;
     padding: 1vw;
     border-left: 3px solid rgba(0, 0, 0, 0.2);
-
-   
-
 }
 
 .menu_tags7 {	
@@ -216,16 +213,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: #1E3090 !important;
     color: white !important;
 }
-/* .avatar-box {
-    border: 5px solid transparent;
-    margin-left: 5px;
-    margin-right: 5px;
-    
-    display: flex;
-    border-radius: 100%;
-} */
-
-
 
 .profilepicture:hover{
     filter: brightness(1.25);
@@ -234,7 +221,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .selected-picture {
-    /* border: 5px solid #1E3090 !important; */
     filter: brightness(1.25);
     transform: scale(1.2);
     animation: drawBorder 2s ease-in forwards;
@@ -270,8 +256,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .profilepicture {
-    width: 4vw;
-    height: 4vw;
+    width: 70px;
+    height: 70px;
     object-fit: cover;
     border-radius: 100%;
     cursor: pointer;
@@ -303,8 +289,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .add-button {
-    width: 3.5vw;
-    height: 3.5vw;
+    width: 40px;
+    height: 40px;
     
 }
 
