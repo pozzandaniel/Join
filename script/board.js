@@ -1,7 +1,12 @@
+let state;
 let id;
 let title;
 let dueDate;
 let category;
+let description;
+let assignedImg;
+let assignedTo;
+let urgency;
 let collaborators;
 let currentDraggedElement;
 let taskBoard;
@@ -103,32 +108,8 @@ function renderTaskTypology(taskTypology, i, array) {
 }
 
 
-function templateTaskTypology() {
-    return `<div draggable="true" ondragstart="startDragging(${id})" class = "user-story" >
-    <div id = "board_category_color${id}" class = "board_category_color"></div>
-    <div class = "ticket_container">
-        <div id="userStory${id}" class = "board_urgency"></div>
-        <span class = "ticket_date">${dueDate}</span> <br> 
-        <p class = "ticket_title">${title}</p>
-        <p class = "ticket_category">${category}</p>
-        <div class = "board_btn_img">
-            <button onclick="showTicketBoard(${id})">Show Ticket</button>
-            <div class = "board_img">
-            <img class="backlog_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px; width:40px; height: 40px">
-            <img class="backlog_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -20px; width:40px; height: 40px">
-            <img class="backlog_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -20px; width:40px; height: 40px">
-            <img class="backlog_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -20px; width:40px; height: 40px">
-            </div>
-        </div>
-        
-        
-    </div>
-    </div>`;
-}
 
 function displayContributors(taskBoard, id){
-
-
     if(taskBoard['assignedImg'][0] === undefined){
         document.getElementById(`contributor1-${id}`).classList.add('d-none');
     }
@@ -140,15 +121,19 @@ function displayContributors(taskBoard, id){
     }
     if(taskBoard['assignedImg'][3] === undefined){
         document.getElementById(`contributor4-${id}`).classList.add('d-none');
-    }
-    
+    } 
 }
 
 function showTicketBoard (id) {
-    // checkStatus(state, id);
     document.getElementById("popupBackground").classList.remove('d-none');
     let array = allTasks.filter( task => task['id'] == id);
-    console.log('array is:',array);
+    getArrayParamaters(array);
+    document.getElementById("ticket_popup").innerHTML = templateTicketPopup();
+    showPopupCollaborators(id, assignedImg);
+    colorUrgencyPopup(urgency);                        
+}
+
+function getArrayParamaters(array){
     state = array[0].state;
     id = array[0].id;
     title = array[0].title;
@@ -158,53 +143,6 @@ function showTicketBoard (id) {
     assignedImg = array[0].assignedImg;
     assignedTo = array[0].assignedTo;
     urgency = array[0].urgency;
-    
-    
-    document.getElementById("ticket_popup").innerHTML = 
-    `  
-    
-            <div class = "ticket_container">
-
-                <div class="top_popup">
-                    <span class = "ticket_date">${dueDate}</span>
-                    <img onclick="closePopup(${id})" src="./assets/images/close.png" style="margin-right:20px">
-                </div>
-                <p class = "ticket_title">${title}</p>
-                <p class = "ticket_description_label"><b>Description:</b></p>
-                <p class = "ticket_description">${description}</p>
-
-                <div class="middle_popup">
-                    <div class="middle_leftbox">
-                        <p class = "ticket_category"><b>Category: </b>${category}</p> 
-                        <span><b>Assigned to:</b> ${assignedTo}</span>
-                        <div class = "board_img">
-                            <img class="popup_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" >
-                            <img class="popup_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" >
-                            <img class="popup_profil_img" id="contributor33-${id}" src="${assignedImg[2]}" >
-                            <img class="popup_profil_img" id="contributor44-${id}" src="${assignedImg[3]}" >
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class = "ticket_popup_footer">
-                <div class="middle_rightbox">
-                    <span>Urgency:</span><img id="urgency_icon" src=""><p>${urgency}</p>
-                </div>
-                <select id="change_status">
-                    <option value ="" disabled style="display:none">Select state</option>
-                    <option  value="toDoTask" >To do</option>
-                    <option value="progressTask">In progress</option>
-                    <option value="testingTask" >Testing</option>
-                    <option value="doneTask">Done</option>
-                </select>
-                <img class="trash-icon"  src= "assets/images/trash.png" onclick = "deleteTask(${id})">
-            </div>
-                        
-        `;
-    showPopupCollaborators(id, assignedImg);
-    colorUrgencyPopup(urgency);
-                            
 }
                         
 function checkStatus(state, id){
@@ -240,9 +178,7 @@ function colorUrgencyPopup(urgency){
 }
 
 function colorBoardCategory(category) {
-
     let categorycolor;
-
     if (category == "Management") {
         categorycolor = '#E26EFF';
     }
@@ -255,7 +191,6 @@ function colorBoardCategory(category) {
     if (category == "Human Ressources") {
         categorycolor = '#66A2DB';
     }
-
     document.getElementById(`board_category_color${id}`).style.backgroundColor = categorycolor;
 }
 
@@ -333,4 +268,69 @@ function closePopup(id) {
         
     document.getElementById("popupBackground").classList.add('d-none');
 
+}
+
+function templateTaskTypology() {
+    return `
+    <div draggable="true" ondragstart="startDragging(${id})" class = "user-story" >
+        <div id = "board_category_color${id}" class = "board_category_color"></div>
+        <div class = "ticket_container">
+            <div id="userStory${id}" class = "board_urgency"></div>
+            <span class = "ticket_date">${dueDate}</span> <br> 
+            <p class = "ticket_title">${title}</p>
+            <p class = "ticket_category">${category}</p>
+            <div class = "board_btn_img">
+                <button onclick="showTicketBoard(${id})">Show Ticket</button>
+                <div class = "board_img">
+                <img class="board_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px;">
+                <img class="board_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -20px;">
+                <img class="board_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -20px;">
+                <img class="board_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -20px;">
+                </div>
+            </div>
+                
+        </div>
+    </div>`;
+}
+
+function templateTicketPopup() {
+    return `  
+    <div class = "ticket_container">
+
+        <div class="top_popup">
+            <span class = "ticket_date">${dueDate}</span>
+            <img onclick="closePopup(${id})" src="./assets/images/close.png" style="margin-right:20px">
+        </div>
+        <p class = "ticket_title">${title}</p>
+        <p class = "ticket_description_label"><b>Description:</b></p>
+        <p class = "ticket_description">${description}</p>
+
+        <div class="middle_popup">
+            <div class="middle_leftbox">
+                <p class = "ticket_category"><b>Category: </b>${category}</p> 
+                <span><b>Assigned to:</b> ${assignedTo}</span>
+                <div class = "board_img">
+                    <img class="popup_profil_img"  id="contributor11-${id}" src="${assignedImg[0]}" >
+                    <img class="popup_profil_img" id="contributor22-${id}" src="${assignedImg[1]}" >
+                    <img class="popup_profil_img" id="contributor33-${id}" src="${assignedImg[2]}" >
+                    <img class="popup_profil_img" id="contributor44-${id}" src="${assignedImg[3]}" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "ticket_popup_footer">
+        <div class="middle_rightbox">
+            <span>Urgency:</span><img id="urgency_icon" src=""><p>${urgency}</p>
+        </div>
+        <select id="change_status">
+            <option value ="" disabled style="display:none">Select state</option>
+            <option  value="toDoTask" >To do</option>
+            <option value="progressTask">In progress</option>
+            <option value="testingTask" >Testing</option>
+            <option value="doneTask">Done</option>
+        </select>
+        <img class="trash-icon"  src= "assets/images/trash.png" onclick = "deleteTask(${id})">
+    </div>         
+`;
 }
