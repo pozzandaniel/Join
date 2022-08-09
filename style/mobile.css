@@ -4,9 +4,18 @@
         width: 100%;
         margin-bottom: 0;
     }
+
+    .profilepicture {
+        width: 50px;
+        height: 50px;
+    }
+
+    .assigned-name {
+        font-size: 2.5vh;
+    }
 }
 
-@media (max-width: 1200px ), (min-height: 1100px) and (max-width:1300px) {
+@media (max-width: 1000px ), (min-height: 1100px) and (max-width:1300px) {
     .workspace {
         min-height: unset;
     }
@@ -40,11 +49,6 @@
 
     .custom-array {
         width: 5vw;
-    }
-
-    .assigned-name {
-        font-size: 3vh;
-        margin-bottom: 2vh;
     }
 
     .avatar-box {
@@ -86,21 +90,6 @@
 
     .custom-array {
         width: 9vw;
-    }
-}
-
-@media (max-width: 550px) {
-    .avatar-box {
-        flex-wrap: wrap;
-    }
-
-    .placeholder-container {
-        height: 45vh;
-    }
-
-    .profilepicture {
-        height: 90px;
-        width: 90px;
     }
 }
 
@@ -341,7 +330,7 @@
         top: 15vh;
         right: 0;
         width: 30vw;
-        transform: translateX(30vw);
+        transform: translateX(30vw) !important;
         z-index: 2;
 
     }
@@ -371,11 +360,20 @@
 
     .footer-sidebar a {
         font-size: 3.5vh !important;
-        padding-left: 30px !important;
+        color: white;
+        text-decoration: none;
+        background-color: #203192;
+        display: flex;
         padding-top: 3.5vh !important;
         padding-bottom: 3.5vh !important;
-        background-color: #203192;
-        
+        padding-left: 30px !important ;  
+    }
+
+    .footer-sidebar a:hover {
+        cursor: pointer;
+        margin-left: 5px !important;
+        padding-left: 25px !important;
+        transition: margin-left 0.5s, padding-left 0.5s !important;
     }
 
     .icon_mobile_container {

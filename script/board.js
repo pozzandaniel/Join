@@ -324,7 +324,7 @@ function templateTicketPopup() {
             <span>Urgency:</span><img id="urgency_icon" src=""><p>${urgency}</p>
         </div>
         <select id="change_status">
-            <option value ="" disabled style="display:none">Select state</option>
+            <option value ="" style="display: none">Select state</option>
             <option  value="toDoTask" >To do</option>
             <option value="progressTask">In progress</option>
             <option value="testingTask" >Testing</option>

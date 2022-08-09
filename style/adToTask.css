@@ -282,6 +282,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: rgb(181, 180, 180);
     cursor: pointer;
     z-index: 2;
+    width: 40px;
 }
 
 .add-button-container:hover{
@@ -320,7 +321,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     justify-content: center;
     border: none;
     box-sizing: border-box;
-    width: 90%;
+    width: 100%;
 
 }
 
