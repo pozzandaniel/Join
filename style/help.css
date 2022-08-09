@@ -1,6 +1,13 @@
+h1 {
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+p {
+    font-size: 20px;
+}
 .content-area {
     flex: 1;
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .help img {
@@ -21,6 +28,7 @@
 }
 
 #scaled_img_path {
+    cursor: pointer;
     width: 100%;
     height: 100%;
     object-fit: contain;

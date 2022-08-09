@@ -283,9 +283,9 @@ function templateTaskTypology() {
                 <button onclick="showTicketBoard(${id})">Show Ticket</button>
                 <div class = "board_img">
                 <img class="board_profil_img"  id="contributor1-${id}" src="${taskBoard['assignedImg'][0]}" style = "margin-left: 0px;">
-                <img class="board_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -20px;">
-                <img class="board_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -20px;">
-                <img class="board_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -20px;">
+                <img class="board_profil_img" id="contributor2-${id}" src="${taskBoard['assignedImg'][1]}" style = "margin-left: -25px;">
+                <img class="board_profil_img" id="contributor3-${id}" src="${taskBoard['assignedImg'][2]}" style = "margin-left: -25px;">
+                <img class="board_profil_img" id="contributor4-${id}" src="${taskBoard['assignedImg'][3]}" style = "margin-left: -25px;">
                 </div>
             </div>
                 

@@ -150,8 +150,11 @@
     height: 18vh;
     overflow: auto;
     text-align: justify;
+    margin-right: 20px;
     
 }
+
+
 
 .board_profil_img {
     width: 40px;

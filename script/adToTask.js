@@ -206,3 +206,10 @@ function selectAvatar(id) {
         selectedUsers.splice(indexAvatar, 1);
     }
 }
+
+function today() {
+    var today = new Date();
+    today = new Date(today.setDate(today.getDate())).toISOString().split('T')[0];
+    document.getElementById('date-input').setAttribute('min', today);
+    
+}
