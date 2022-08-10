@@ -319,6 +319,7 @@
     .menu-content {
         height: 15vh !important;
         flex-direction: row !important;
+        position: unset !important;
     }
 
     .menu_footer {
@@ -512,10 +513,10 @@
         width: 98%;
         height: 38vh;
     }
-
+/* 
     .workspace {
         height: 160vh;
-    }
+    } */
 
     .task-container h2 {
         padding-top: 3vh;

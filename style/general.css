@@ -28,5 +28,7 @@ body {
 .workspace {
     width: 100%;
     min-height: 100vh;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
