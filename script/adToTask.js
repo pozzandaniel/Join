@@ -170,7 +170,7 @@ function updateAllTasks(completeTask){
 /**
  * With this function we can save the tasks in the backend.
  */
-setURL('http://gruppe-252.developerakademie.net/smallest_backend_ever');
+setURL('https://join.daniel-pozzan.com/smallest_backend_ever');
 
 function saveAllTasks() {
     backend.setItem('allTasks', JSON.stringify(allTasks));

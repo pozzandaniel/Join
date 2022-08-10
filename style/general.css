@@ -28,7 +28,13 @@ body {
 .workspace {
     width: 100%;
     min-height: 100vh;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
+@media (max-width: 1000px) {
+   .workspace {
+        margin-left: 0;
+        margin-right: 0;
+   }
+}
