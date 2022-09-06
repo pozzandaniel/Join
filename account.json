@@ -21,4 +21,11 @@
     "email": "",
     "password": "1011",
     "bild": "./assets/images/Kevin.jpg"
-}]
+}, 
+{
+    "name": "Guest",
+    "email": "",
+    "password": "0000",
+    "bild": "./assets/images/guest-user.jpg"
+}
+]

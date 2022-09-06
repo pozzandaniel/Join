@@ -56,8 +56,6 @@ input::placeholder {
 }
 
 .log_in form button{
-    margin-left: 90px;
-    margin-right: 90px;
     cursor: pointer;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -71,4 +69,10 @@ input::placeholder {
     height: 60px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.buttons-cont {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

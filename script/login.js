@@ -36,6 +36,13 @@ function login() {
     } 
 }
 
+function loginAsGuest() {
+    let username = document.getElementById('username').value = account[account.length-1].name;
+    let userpassword = document.getElementById('userpassword').value = account[account.length-1].password;
+    console.log('username is: ', username, ' password is: ', userpassword);
+
+}
+
 
 /**
  * The image of the avatar is chosen according to the transmitted username data.
